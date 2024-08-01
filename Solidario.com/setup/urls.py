@@ -21,5 +21,5 @@ import sistema.urls
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',include('sistema.urls'))
+    path('',include(sistema.urls))
 ]
