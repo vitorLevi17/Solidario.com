@@ -21,6 +21,37 @@ class LoginForm(forms.Form):
             }
         )
     )
+class CadastroForm(forms.Form):
+    nome_cad = forms.CharField(
+        label="Nome",
+        required=True,
+        max_length=100,
+        widget=forms.TextInput(
+            attrs={
+                "placeholder": "Ex.Doador Oliveira"
+            }
+        )
+    )
+    senha_cad = forms.CharField(
+        label="Senha",
+        required=True,
+        max_length=100,
+        widget=forms.PasswordInput(
+            attrs={
+                "placeholder": "Insira a Senha"
+            }
+        )
+    )
+    senha_cad2 = forms.CharField(
+        label="Senha",
+        required=True,
+        max_length=100,
+        widget=forms.PasswordInput(
+            attrs={
+                "placeholder": "Confirme a senha"
+            }
+        )
+    )
 
 
 

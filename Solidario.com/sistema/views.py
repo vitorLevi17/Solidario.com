@@ -1,5 +1,5 @@
 from django.shortcuts import render,redirect
-from .forms import LoginForm
+from .forms import LoginForm,CadastroForm
 from django.contrib.auth.models import User
 from django.contrib import auth,messages
 
@@ -35,4 +35,31 @@ def login(request):
     return render(request,'login.html',{"form":form})
 
 def cadastro(request):
-    return render(request,'cadastro.html')
+    form = CadastroForm()
+
+    if request.method == "POST":
+        form = CadastroForm(request.POST)
+
+        if form.is_valid():
+
+            nome = form["nome_cad"].value()
+            senha1 = form["senha_cad"].value()
+            senha2 = form["senha_cad2"].value()
+
+            if senha1 != senha2:
+                messages.error(request, "Senhas não coincidem")
+                return redirect('cadastro')
+
+            if User.objects.filter(username = nome).exists():
+                messages.error(request, "Usuario já existente")
+                return redirect('cadastro')
+
+            usuario = User.objects.create_user(
+                username=nome,
+                email="",
+                password = senha2
+            )
+            usuario.save()
+            return redirect('login')
+
+    return render(request,'cadastro.html',{"form":form})
