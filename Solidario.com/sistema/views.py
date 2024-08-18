@@ -1,9 +1,7 @@
 from django.shortcuts import render,redirect
-from pyexpat.errors import messages
-
 from .forms import LoginForm
 from django.contrib.auth.models import User
-from django.contrib import auth
+from django.contrib import auth,messages
 
 def index(request):
     return render(request,'index.html')
