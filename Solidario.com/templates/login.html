@@ -24,17 +24,20 @@
     <main>
         <div class="login-container">
             <h2>Login</h2>
-            <form action="#" method="POST">
+            <form action="{% url 'login' %}" method="POST">
+                 {% csrf_token %}
                 <div class="form-group">
-                    <label for="email">Email:</label>
-                    <input type="email" id="email" name="email" required>
+                    <label for="username">Usuário:</label>
+                    <input type="text" id="username" name="Usuário" required>
                 </div>
                 <div class="form-group">
-                    <label for="password">Senha:</label>
-                    <input type="password" id="password" name="password" required>
-                </div>
+                     <label for="password">Senha:</label>
+                     <input type="password" id="password" name="Senha" required>
+                 </div>
                 <button type="submit">Entrar</button>
+
             </form>
+
             <div class="register-link">
                 <p>Não tem uma conta? <a href="{% url 'cadastro' %}">Cadastre-se</a></p>
             </div>
