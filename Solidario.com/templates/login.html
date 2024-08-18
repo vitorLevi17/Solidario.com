@@ -4,57 +4,110 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - Solidário.com</title>
-    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .form-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+            font-size: 24px;
+            color: #333;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        .form-group input[type="password"] {
+            margin-bottom: 10px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            border: none;
+            border-radius: 4px;
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .error-message {
+            color: red;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .register-link {
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        .register-link a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .register-link a:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <body>
-    <header>
-        <div class="container">
-            <div class="logo">
-                <h1>SOLIDÁRIO.COM</h1>
+    <div class="form-container">
+        <h2>Login</h2>
+        <form action="{% url 'login' %}" method="POST">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="nome_login">Nome:</label>
+                <input type="text" id="nome_login" name="nome_login" placeholder="Ex.Doador Oliveira" required>
             </div>
-            <nav>
-                <ul>
-                    <li><a href="#">QUEM SOMOS</a></li>
-                    <li><a href="#">COMO FUNCIONAMOS</a></li>
-                    <li><a href="#">LOGIN</a></li>
-                </ul>
-            </nav>
+            <div class="form-group">
+                <label for="senha_login">Senha:</label>
+                <input type="password" id="senha_login" name="senha_login" placeholder="Insira a Senha" required>
+            </div>
+            {% if error_message %}
+                <p class="error-message">{{ error_message }}</p>
+            {% endif %}
+            <button type="submit">Entrar</button>
+        </form>
+        <div class="register-link">
+            <p>Não tem uma conta? <a href="{% url 'cadastro' %}">Cadastre-se</a></p>
         </div>
-    </header>
-    <main>
-        <div class="login-container">
-            <h2>Login</h2>
-            <form action="{% url 'login' %}" method="POST">
-                 {% csrf_token %}
-                <div class="form-group">
-                    <label for="username">Usuário:</label>
-                    <input type="text" id="username" name="Usuário" required>
-                </div>
-                <div class="form-group">
-                     <label for="password">Senha:</label>
-                     <input type="password" id="password" name="Senha" required>
-                 </div>
-                <button type="submit">Entrar</button>
-
-            </form>
-
-            <div class="register-link">
-                <p>Não tem uma conta? <a href="{% url 'cadastro' %}">Cadastre-se</a></p>
-            </div>
-        </div>
-    </main>
-    <footer>
-        <div class="container">
-            <div class="social-media">
-                <a href="#">@SOLIDÁRIO.COM</a>
-            </div>
-            <div class="icons">
-                <a href="#"><img src="instagram-icon.png" alt="Instagram"></a>
-                <a href="#"><img src="whatsapp-icon.png" alt="WhatsApp"></a>
-                <a href="#"><img src="x-icon.png" alt="X"></a>
-                <a href="#"><img src="linkedin-icon.png" alt="LinkedIn"></a>
-            </div>
-        </div>
-    </footer>
+    </div>
 </body>
 </html>
