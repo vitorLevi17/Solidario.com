@@ -20,3 +20,5 @@ def main():
 
 if __name__ == '__main__':
     main()
+
+#direcionar usuario pelo ID (if ID_user = ID_doador return redirect DOADOR), nome(if nome_user = nome_doador return redirect DOADOR), pelo grupo

@@ -16,7 +16,11 @@
                 <ul>
                     <li><a href="#">QUEM SOMOS</a></li>
                     <li><a href="#">COMO FUNCIONAMOS</a></li>
-                    <li><a href="{% url 'login' %}">LOGIN</a></li>
+                    {% if user.is_authenticated %}
+                        <li><a href="{% url 'logout' %}"> Logout</a></li>
+                    {% else %}
+                        <li><a href="{% url 'login' %}">LOGIN</a></li>
+                    {% endif %}
                 </ul>
             </nav>
         </div>

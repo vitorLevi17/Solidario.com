@@ -11,7 +11,7 @@ def login(request):
 
     if request.method == 'POST':
         form = LoginForm(request.POST)
-        print("1 cond")
+
 
         if form.is_valid():
             nome = form["nome_login"].value()
@@ -23,7 +23,7 @@ def login(request):
                 username = nome,
                 password = senha
             )
-            print("2 cond")
+
             if usuario != None:
                 auth.login(request,usuario)
                 return redirect('index')
@@ -60,6 +60,12 @@ def cadastro(request):
                 password = senha2
             )
             usuario.save()
-            return redirect('login')
+            return redirect('index')
 
     return render(request,'cadastro.html',{"form":form})
+
+def logout(request):
+    auth.logout(request)
+    messages.success(request,"Logout feito")
+    return redirect('login')
+
