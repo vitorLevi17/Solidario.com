@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 from django.contrib import auth,messages
 
 def index(request):
-    return render(request,'index_doa.html')
+    return render(request,'index.html')
 
 def login(request):
     form = LoginForm()
