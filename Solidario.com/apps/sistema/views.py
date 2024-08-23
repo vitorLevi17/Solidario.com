@@ -2,6 +2,7 @@ from django.shortcuts import render,redirect
 from .forms import LoginForm,CadastroForm
 from django.contrib.auth.models import User
 from django.contrib import auth,messages
+from apps.doador.models import Doadores
 
 def index(request):
     return render(request,'index.html')
@@ -26,7 +27,10 @@ def login(request):
 
             if usuario != None:
                 auth.login(request,usuario)
-                return redirect('index')
+                if Doadores.objects.filter(usuario = usuario).exists():
+                    return redirect('doador_inicio')
+                else:
+                    return redirect('index') #Alterar para recebedor inicio
             else:
                 messages.error(request,"Usuario ou senha incorretos")
                 return redirect('login')
@@ -41,10 +45,13 @@ def cadastro(request):
         form = CadastroForm(request.POST)
 
         if form.is_valid():
-
             nome = form["nome_cad"].value()
+            email = form["email_cad"].value()
             senha1 = form["senha_cad"].value()
             senha2 = form["senha_cad2"].value()
+            cpf = form["cpf_cad"].value()
+            cep = form["cep_cad"].value()
+            telefone = form["telefone_cad"].value()
 
             if senha1 != senha2:
                 messages.error(request, "Senhas não coincidem")
@@ -56,10 +63,23 @@ def cadastro(request):
 
             usuario = User.objects.create_user(
                 username=nome,
-                email="",
-                password = senha2
+                email=email,
+                password=senha2
             )
+
             usuario.save()
+
+            doador = Doadores.objects.create(
+                usuario = usuario,
+                nm_doador = nome,
+                cpf = cpf,
+                cep = cep,
+                telefone = telefone,
+                historico_doacoes = 0
+
+            )
+            doador.save()
+
             return redirect('index')
 
     return render(request,'cadastro.html',{"form":form})

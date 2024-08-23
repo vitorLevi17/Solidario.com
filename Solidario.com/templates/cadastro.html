@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro - Solidário.com</title>
     <style>
-        body {
+         body {
             font-family: Arial, sans-serif;
             background-color: #f4f4f4;
             display: flex;
@@ -94,7 +94,23 @@
             {% csrf_token %}
             <div class="form-group">
                 <label for="nome_cad">Nome:</label>
-                <input type="text" id="nome_cad" name="nome_cad" placeholder="Ex.Doador Oliveira" required>
+                <input type="text" id="nome_cad" name="nome_cad" placeholder="Ex. Doador Oliveira" required>
+            </div>
+            <div class="form-group">
+                <label for="email_cad">Email:</label>
+                <input type="email" id="email_cad" name="email_cad" placeholder="Ex. doadoroliveira@gmail.com" required>
+            </div>
+            <div class="form-group">
+                <label for="cpf_cad">CPF:</label>
+                <input type="text" id="cpf_cad" name="cpf_cad" placeholder="Somente números" required>
+            </div>
+            <div class="form-group">
+                <label for="cep_cad">CEP:</label>
+                <input type="text" id="cep_cad" name="cep_cad" placeholder="Somente números" required>
+            </div>
+            <div class="form-group">
+                <label for="telefone_cad">Telefone:</label>
+                <input type="text" id="telefone_cad" name="telefone_cad" placeholder="Somente números" required>
             </div>
             <div class="form-group">
                 <label for="senha_cad">Senha:</label>

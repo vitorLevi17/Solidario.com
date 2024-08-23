@@ -22,14 +22,53 @@ class LoginForm(forms.Form):
         )
     )
 class CadastroForm(forms.Form):
-
     nome_cad = forms.CharField(
         label="Nome",
         required=True,
         max_length=100,
         widget=forms.TextInput(
             attrs={
-                "placeholder": "Ex.Doador Oliveira"
+                "placeholder": "Ex. Doador Oliveira"
+            }
+        )
+    )
+    email_cad = forms.EmailField(
+        label="Email",
+        required=True,
+        max_length=100,
+        widget=forms.EmailInput(
+            attrs={
+                "placeholder": "Ex.DoadorOliveira@gmail.com"
+            }
+        )
+    )
+    cpf_cad = forms.CharField(
+        label="CPF",
+        required=True,
+        max_length=11,  # CPF tem no máximo 11 caracteres
+        widget=forms.TextInput(
+            attrs = {
+                "placeholder": "Somente números"
+            }
+        )
+    )
+    cep_cad = forms.CharField(
+        label="CEP",
+        required=True,
+        max_length=8,  # CEP tem no máximo 8 caracteres
+        widget=forms.TextInput(
+            attrs={
+                "placeholder": "Somente números"
+            }
+        )
+    )
+    telefone_cad = forms.CharField(
+        label="Telefone",
+        required=True,
+        max_length=13,  # Dependendo do formato com código de área
+        widget=forms.TextInput(
+            attrs={
+                "placeholder": "Somente números"
             }
         )
     )
@@ -44,7 +83,7 @@ class CadastroForm(forms.Form):
         )
     )
     senha_cad2 = forms.CharField(
-        label="Senha",
+        label="Confirme a Senha",
         required=True,
         max_length=100,
         widget=forms.PasswordInput(
@@ -53,6 +92,7 @@ class CadastroForm(forms.Form):
             }
         )
     )
+
 
 
 

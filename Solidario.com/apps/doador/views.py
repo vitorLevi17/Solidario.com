@@ -1,3 +1,4 @@
 from django.shortcuts import render
 
-# Create your views here.
+def doador_incio(request):
+    return render(request,"doador/doador_inicio.html")
