@@ -30,7 +30,7 @@ def login(request):
                 if Doadores.objects.filter(usuario = usuario).exists():
                     return redirect('doador_inicio')
                 else:
-                    return redirect('index') #Alterar para recebedor inicio
+                    return redirect('recebedor_inicio')
             else:
                 messages.error(request,"Usuario ou senha incorretos")
                 return redirect('login')

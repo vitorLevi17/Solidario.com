@@ -21,11 +21,8 @@ def main():
 if __name__ == '__main__':
     main()
 
-#direcionar usuario pelo ID (if ID_user = ID_doador return redirect DOADOR), nome(if nome_user = nome_doador return redirect DOADOR), pelo grupo
+# 1-Tela para cadastrar recebedores
+# 3-Validators(Doador,Recebedor)
 
-# 2-Criar o models(Recebedor)
-#3-Validators(Doador,Recebedor)
-# 3-Refazer o forms(sistema,rec)
-# 4-Refazer views e templates
-# 4-Criar Views
-# 5-Criar validação de redirecionamento(sistema Recebedor)
+
+

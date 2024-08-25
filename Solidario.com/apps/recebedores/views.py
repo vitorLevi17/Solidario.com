@@ -1,3 +1,4 @@
 from django.shortcuts import render
 
-# Create your views here.
+def recebedor_inicio(request):
+    return render(request,"recebedor/recebedor_inicio.html")
