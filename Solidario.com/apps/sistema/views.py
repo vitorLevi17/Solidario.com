@@ -1,8 +1,9 @@
 from django.shortcuts import render,redirect
-from .forms import LoginForm,CadastroForm
+from .forms import LoginForm,CadastroForm,CadastroRecebedorForm
 from django.contrib.auth.models import User
 from django.contrib import auth,messages
 from apps.doador.models import Doadores
+from apps.recebedores.models import Recebedores
 
 def index(request):
     return render(request,'index.html')
@@ -83,6 +84,54 @@ def cadastro(request):
             return redirect('index')
 
     return render(request,'cadastro.html',{"form":form})
+
+def cadastro_recebedor(request):
+    form = CadastroRecebedorForm()
+
+    if request.method == "POST":
+        form = CadastroRecebedorForm(request.POST)
+
+        if form.is_valid():
+            nome = form["nome_cad"].value()
+            email = form["email_cad"].value()
+            senha1 = form["senha_cad"].value()
+            senha2 = form["senha_cad2"].value()
+            cnpj = form["cnpj_cad"].value()
+            cep = form["cep_cad"].value()
+            telefone = form["telefone_cad"].value()
+            pix = form["pix_cad"].value()
+
+            if senha1 != senha2:
+                messages.error(request, "Senhas não coincidem")
+                return redirect('cadastro_recebedor')
+
+            if User.objects.filter(username = nome).exists():
+                messages.error(request, "Usuario já existente")
+                return redirect('cadastro_recebedor')
+
+            usuario = User.objects.create_user(
+                username=nome,
+                email=email,
+                password=senha2
+            )
+
+            usuario.save()
+
+            recebedor = Recebedores.objects.create(
+                usuario = usuario,
+                nm_recebedor = nome,
+                cnpj = cnpj,
+                cep = cep,
+                pix = pix,
+                telefone = telefone
+
+
+            )
+            recebedor.save()
+
+            return redirect('index')
+
+    return render(request,'cadastro_recebedor.html',{"form":form})
 
 def logout(request):
     auth.logout(request)

@@ -21,7 +21,8 @@ def main():
 if __name__ == '__main__':
     main()
 
-# 1-Tela para cadastrar recebedores
+# 1-Tela e forms para cadastrar recebedores
+# 2-Recebedores admin alterar
 # 3-Validators(Doador,Recebedor)
 
 
