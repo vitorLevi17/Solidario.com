@@ -21,7 +21,7 @@ def main():
 if __name__ == '__main__':
     main()
 
-# 1-Tabela de doação
+# 1-Testar banco
 # 2-Views
 # 2-Recebedores admin alterar
 # 3-Validators(Doador,Recebedor)
