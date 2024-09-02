@@ -21,9 +21,9 @@ def main():
 if __name__ == '__main__':
     main()
 
-# 1-Testar banco
-# 2-Views
-# 2-Recebedores admin alterar
+# 1-Testar banco e forms
+# 2- Bloquear Views para usuarios diferentes
+# 2-Recebedores/doações admin alterar
 # 3-Validators(Doador,Recebedor)
 
 

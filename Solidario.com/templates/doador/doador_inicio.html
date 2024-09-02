@@ -1,10 +1,67 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <title>Não tenho</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doações disponiveis</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .doacao {
+            border: 1px solid #ccc;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            background-color: #e9ecef;
+        }
+
+        .doacao h3 {
+            margin-top: 0;
+        }
+
+        .doacao p {
+            margin: 5px 0;
+        }
+
+        .doacao .item, .doacao .recebedor {
+            font-weight: bold;
+        }
+    </style>
 </head>
 <body>
-        jdkjdhasçklghfsçgkljfhglçdfgjçkldgd
+    <div class="container">
+        <h1>Lista de Doações</h1>
+        {% for doacao in doacoes %}
+        <div class="doacao">
+            <h3>Doação {{ doacao.id }}</h3>
+            <p><span class="doacao_item">Item da Doação:</span> {{ doacao.doacao_item }}</p>
+            <p><span class="recebedor">Recebedor:</span> {{ doacao.recebedor }}</p>
+            <p><span class="urgencia">Urgência:</span> {{ doacao.get_urgencia_display }}</p>
+            <p><span class="modo_entrega">Modo de Entrega:</span> {{ doacao.get_modo_entrega_display }}</p>
+            <p><span class="status_doacao">Status:</span> {{ doacao.get_status_doacao_display }}</p>
+            <p><span class="data_abertura">Data de Abertura:</span> {{ doacao.data_abertura|date:"d/m/Y H:i" }}</p>
+        </div>
+        {% empty %}
+        <p>Nenhuma doação encontrada.</p>
+        {% endfor %}
+    </div>
 </body>
 </html>
