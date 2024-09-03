@@ -20,8 +20,8 @@ def main():
 
 if __name__ == '__main__':
     main()
-
-# 1-Testar banco e forms
+#objects(2 admin)
+# 1-Testar banco e forms(Criar doação)
 # 2- Bloquear Views para usuarios diferentes
 # 2-Recebedores/doações admin alterar
 # 3-Validators(Doador,Recebedor)

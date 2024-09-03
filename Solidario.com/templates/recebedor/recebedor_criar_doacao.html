@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Criar Doação</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px 0px #0000001a;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+        }
+
+        .btn-primary {
+            width: 100%;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Criar Nova Doação</h1>
+        <form action="{% url 'recebedor_criar_doacao' %}" method="POST">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="id_urgencia">{{ form.urgencia.label }}</label>
+                {{ form.urgencia }}
+            </div>
+            <div class="form-group">
+                <label for="id_modo_entrega">{{ form.modo_entrega.label }}</label>
+                {{ form.modo_entrega }}
+            </div>
+            <div class="form-group">
+                <label for="id_doacao_item">{{ form.doacao_item.label }}</label>
+                {{ form.doacao_item }}
+            </div>
+            <button type="submit" class="btn btn-primary">Criar Doação</button>
+        </form>
+    </div>
+</body>
+</html>
