@@ -20,7 +20,7 @@ def main():
 
 if __name__ == '__main__':
     main()
-#objects(2 admin)
+# Erro FK tabela doação na criação do pedido / objects(2 admin)
 # 1-Testar banco e forms(Criar doação)
 # 2- Bloquear Views para usuarios diferentes
 # 2-Recebedores/doações admin alterar

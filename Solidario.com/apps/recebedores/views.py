@@ -14,10 +14,9 @@ def recebedor_criar_doacao(request):
         form = DoacaoForm(request.POST)
         if form.is_valid:
             doacao = form.save(commit=False)
-            recebedor = Recebedores.objects.get(user=request.usuario)
+            recebedor = Recebedores.objects.get(usuario=request.user)
 
             doacao.recebedor = recebedor
-            doacao.status_doacao = "Aberto"
             doacao.data_abertura = timezone.now()
 
             doacao.save()

@@ -34,15 +34,10 @@ class Doacao(models.Model):
         ("PRESENCIAL","presencial"),
         ("DELIVERY", "delivery"),
     ]
-    status = [
-        ("ABERTO","aberto"),
-        ("FINALIZADO", "finalizado"),
-        ("CANCELADO", "cancelado"),
-    ]
 
     urgencia = models.CharField(max_length=50,choices=urgencias)
     modo_entrega = models.CharField(max_length=50,choices=modos_entrega)
-    status_doacao = models.CharField(max_length=50,choices=status)
+    status_doacao = models.CharField(max_length=50,default="aberto") #aberto, andamento, finalizado e cancelado
     data_abertura = models.DateTimeField(default=datetime.now)
     recebedor = models.ForeignKey(to=Recebedores,on_delete=models.CASCADE,null=False,blank=False,related_name="recebedor_doacao")
     doacao_item = models.ForeignKey(to=Doacao_Item,on_delete=models.CASCADE,null=False,blank=False,related_name="doacao")
