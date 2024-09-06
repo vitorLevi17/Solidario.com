@@ -9,7 +9,7 @@ class Item(models.Model):
         ("ROUPA", "roupa"),
         ("BRINQUEDOS", "brinquedos"),
         ("HIGIENE", "higiene"),
-        ("BRINQUEDOS", "brinquedos"),
+
     ]
 
     nm_item = models.CharField(max_length=255,blank=False,null=False)
