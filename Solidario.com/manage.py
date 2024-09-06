@@ -20,11 +20,13 @@ def main():
 
 if __name__ == '__main__':
     main()
-# Erro FK tabela doação na criação do pedido / objects(2 admin)
+# Recebedor criar pedido com a quantidade de itens
+# 1.1-API para buscar endereço formatado
 # 1-Testar banco e forms(Criar doação)
 # 2- Bloquear Views para usuarios diferentes
-# 2-Recebedores/doações admin alterar
-# 3-Validators(Doador,Recebedor)
+# 3-Recebedores/doações admin alterar
+# 4-Validators(Doador,Recebedor)
+
 
 
 

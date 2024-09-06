@@ -48,16 +48,17 @@
 </head>
 <body>
     <div class="container">
+        <li><a href="{% url 'logout' %}"> Logout</a></li>
         <h1>Lista de Doações</h1>
         {% for doacao in doacoes %}
         <div class="doacao">
             <h3>Doação {{ doacao.id }}</h3>
-            <p><span class="doacao_item">Item da Doação:</span> {{ doacao.doacao_item.nm_item }}</p>
+            <p><span class="doacao_item">Item da Doação:</span> {{ doacao.item.nm_item }}</p>
+            <p><span class="doacao_item">Quantidade:</span> {{ doacao.quantidade }}</p>
             <p><span class="recebedor">Recebedor:</span> {{ doacao.recebedor.nm_recebedor }}</p>
             <p><span class="urgencia">Urgência:</span> {{ doacao.get_urgencia_display }}</p>
             <p><span class="modo_entrega">Modo de Entrega:</span> {{ doacao.get_modo_entrega_display }}</p>
-            <p><span class="status_doacao">Status:</span> {{ doacao.get_status_doacao_display }}</p>
-            <p><span class="data_abertura">Data de Abertura:</span> {{ doacao.data_abertura|date:"d/m/Y H:i" }}</p>
+            <p><span class="recebedor">Endereço:</span> {{ doacao.recebedor.cep }}</p>
         </div>
         {% empty %}
         <p>Nenhuma doação encontrada.</p>

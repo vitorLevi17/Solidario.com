@@ -57,8 +57,12 @@
                 {{ form.modo_entrega }}
             </div>
             <div class="form-group">
-                <label for="id_doacao_item">{{ form.doacao_item.label }}</label>
-                {{ form.doacao_item }}
+                <label for="id_doacao_item">{{ form.item.label }}</label>
+                {{ form.item }}
+            </div>
+            <div class="form-group">
+                <label for="id_quantidade">{{ form.quantidade.label }}</label>
+                {{ form.quantidade }}
             </div>
             <button type="submit" class="btn btn-primary">Criar Doação</button>
         </form>

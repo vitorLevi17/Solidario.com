@@ -15,13 +15,6 @@ class Item(models.Model):
     nm_item = models.CharField(max_length=255,blank=False,null=False)
     tp_item = models.CharField(max_length=50, choices=opcoes_item,blank=False)
 
-class Doacao_Item(models.Model):
-    quantidade = models.IntegerField()
-    item = models.ForeignKey(to=Item,on_delete=models.CASCADE,null=False,blank=False,related_name="doacao_item")
-
-class Item_Doacao_Rec(models.Model):
-    quantidade = models.IntegerField()
-    Item = models.ForeignKey(to=Item,on_delete=models.CASCADE,null=False,blank=False,related_name="item_doacao")
 
 class Doacao(models.Model):
 
@@ -39,8 +32,9 @@ class Doacao(models.Model):
     modo_entrega = models.CharField(max_length=50,choices=modos_entrega)
     status_doacao = models.CharField(max_length=50,default="aberto") #aberto, andamento, finalizado e cancelado
     data_abertura = models.DateTimeField(default=datetime.now)
+    quantidade = models.IntegerField(null=False,blank=False)
     recebedor = models.ForeignKey(to=Recebedores,on_delete=models.CASCADE,null=False,blank=False,related_name="recebedor_doacao")
-    doacao_item = models.ForeignKey(to=Doacao_Item,on_delete=models.CASCADE,null=False,blank=False,related_name="doacao")
+    item = models.ForeignKey(to=Item,on_delete=models.CASCADE,null=False,blank=False,related_name="item_doacao")
 
 class Doacao_Rec(models.Model):
 
@@ -53,5 +47,5 @@ class Doacao_Rec(models.Model):
     data_recebimento = models.DateTimeField(default=datetime.now)
     doador = models.ForeignKey(to=Doadores,on_delete=models.CASCADE,null=False,blank=False,related_name="doadores")
     doacao_pedido = models.ForeignKey(to=Doacao,on_delete=models.CASCADE,null=False,blank=False,related_name="doacao_pedido")
-    doacao_item = models.ForeignKey(to=Item_Doacao_Rec,on_delete=models.CASCADE,null=False,blank=False,related_name="doacao")
+    item = models.ForeignKey(to=Item,on_delete=models.CASCADE,null=False,blank=False,related_name="item")
 
