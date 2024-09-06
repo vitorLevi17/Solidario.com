@@ -15,6 +15,9 @@ class Item(models.Model):
     nm_item = models.CharField(max_length=255,blank=False,null=False)
     tp_item = models.CharField(max_length=50, choices=opcoes_item,blank=False)
 
+    def __str__(self):
+        return self.nm_item
+
 
 class Doacao(models.Model):
 
