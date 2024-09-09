@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Item,Doacao,Doacao_Rec
+from .models import Item,Doacao,DoacaoRec
 
 class ListItem(admin.ModelAdmin):
     list_display = ("nm_item","tp_item")
@@ -14,5 +14,5 @@ class ListDoacao(admin.ModelAdmin):
 
 admin.site.register(Item,ListItem)
 admin.site.register(Doacao,ListDoacao)
-admin.site.register(Doacao_Rec)
+admin.site.register(DoacaoRec)
 

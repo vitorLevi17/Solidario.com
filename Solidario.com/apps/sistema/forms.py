@@ -136,7 +136,7 @@ class CadastroRecebedorForm(forms.Form):
     telefone_cad = forms.CharField(
         label="Telefone",
         required=True,
-        max_length=13,  # Dependendo do formato com código de área
+        max_length=13,
         widget=forms.TextInput(
             attrs={
                 "placeholder": "Somente números"
@@ -152,6 +152,17 @@ class CadastroRecebedorForm(forms.Form):
                 "placeholder": "Insira sua chave pix"
             }
         )
+    )
+    complemento_cad = forms.CharField(
+        label="Complemento",
+        required=True,
+        max_length=255,
+        widget=forms.TextInput(
+            attrs={
+                "placeholder": "Próximo a loja X"
+            }
+        )
+
     )
     senha_cad = forms.CharField(
         label="Senha",

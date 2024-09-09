@@ -1,3 +1,4 @@
+from django.core.exceptions import ValidationError
 from django.db import models
 from datetime import datetime
 from apps.recebedores.models import Recebedores
@@ -37,18 +38,24 @@ class Doacao(models.Model):
     data_abertura = models.DateTimeField(default=datetime.now)
     quantidade = models.IntegerField(null=False,blank=False)
     recebedor = models.ForeignKey(to=Recebedores,on_delete=models.CASCADE,null=False,blank=False,related_name="recebedor_doacao")
-    item = models.ForeignKey(to=Item,on_delete=models.CASCADE,null=False,blank=False,related_name="item_doacao")
+    item = models.ForeignKey(to=Item,on_delete=models.CASCADE,null=False,blank=False,related_name="item_doacao")#item do pedido
 
-class Doacao_Rec(models.Model):
+class DoacaoRec(models.Model):
+    modo_entrega = models.CharField(max_length=50)
+    data_combinada = models.DateTimeField(null=False, blank=False)
+    data_recebimento = models.DateTimeField(null=False, blank=False)
+    doador = models.ForeignKey(to=Doadores, on_delete=models.CASCADE, null=False, blank=False, related_name="doadores")
+    doacao_pedido = models.ForeignKey(to=Doacao, on_delete=models.CASCADE, null=False, blank=False, related_name="doacao_pedido")
+    item = models.ForeignKey(to=Item, on_delete=models.CASCADE, null=False, blank=False)
+    quantidade = models.IntegerField(null=False, blank=False)
 
-    modos_entrega = [
-        ("PRESENCIAL","presencial"),
-        ("DELIVERY", "delivery"),
-    ]
+    def validator(self):
+        self.modo_entrega = self.doacao_pedido.modo_entrega
+        if self.quantidade > self.doacao_pedido.quantidade:
+            raise ValidationError('A quantidade recebida não pode ser maior que a quantidade doada.')
 
-    modo_entrega = models.CharField(max_length=50,choices=modos_entrega)
-    data_recebimento = models.DateTimeField(default=datetime.now)
-    doador = models.ForeignKey(to=Doadores,on_delete=models.CASCADE,null=False,blank=False,related_name="doadores")
-    doacao_pedido = models.ForeignKey(to=Doacao,on_delete=models.CASCADE,null=False,blank=False,related_name="doacao_pedido")
-    item = models.ForeignKey(to=Item,on_delete=models.CASCADE,null=False,blank=False,related_name="item")
+
+
+
+
 

@@ -20,7 +20,9 @@ def main():
 
 if __name__ == '__main__':
     main()
-# Recebedor criar pedido com a quantidade de itens
+# Recebedor criar pedido com a quantidade de itens(doacao_rec.models)
+# fazer forms para os filtros de recebedores(Doações,Pedidos,Centros)
+# fazer forms para os filtros de doadores(Pedidos,Centros)
 # 1.1-API para buscar endereço formatado
 # 1-Testar banco e forms(Criar doação)
 # 2- Bloquear Views para usuarios diferentes
