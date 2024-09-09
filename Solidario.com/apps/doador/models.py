@@ -8,7 +8,7 @@ class Doadores(models.Model):
     cep = models.CharField(max_length=8, null= False, blank= False,default='00000000')
     telefone = models.CharField(max_length=13, null= False, blank= False)
     historico_doacoes = models.IntegerField(models.CharField(default=0))
-
+    complemento = models.CharField(max_length=255, null= False, blank= False,default="Rua de trás")
     def __str__(self):
         return self.nm_doador
 

@@ -61,6 +61,17 @@ class CadastroForm(forms.Form):
             }
         )
     )
+    complemento_cad = forms.CharField(
+        label="Complemento",
+        required=True,
+        max_length=255,
+        widget=forms.TextInput(
+            attrs={
+                "placeholder": "Próximo a loja X"
+            }
+        )
+
+    )
     telefone_cad = forms.CharField(
         label="Telefone",
         required=True,

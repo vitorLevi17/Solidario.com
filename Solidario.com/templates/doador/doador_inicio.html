@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Doações disponiveis</title>
+    <title>Doações disponíveis</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -44,6 +44,21 @@
         .doacao .item, .doacao .recebedor {
             font-weight: bold;
         }
+
+        .btn-doar {
+            display: inline-block;
+            padding: 10px 15px;
+            background-color: #28a745;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+
+        .btn-doar:hover {
+            background-color: #218838;
+        }
     </style>
 </head>
 <body>
@@ -59,6 +74,7 @@
             <p><span class="urgencia">Urgência:</span> {{ doacao.get_urgencia_display }}</p>
             <p><span class="modo_entrega">Modo de Entrega:</span> {{ doacao.get_modo_entrega_display }}</p>
             <p><span class="recebedor">Endereço:</span> {{ doacao.recebedor.cep }}</p>
+            <a href="{% url 'doar' doacao.id %}" class="btn-doar">Doar</a>
         </div>
         {% empty %}
         <p>Nenhuma doação encontrada.</p>
