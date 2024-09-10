@@ -20,6 +20,7 @@ def main():
 
 if __name__ == '__main__':
     main()
+
 # quantidade.doa_rec < quantidade.doa
 # Recebedor criar pedido com a quantidade de itens(doacao_rec.models)
 # fazer forms para os filtros de recebedores(Doações,Pedidos,Centros)
@@ -28,7 +29,6 @@ if __name__ == '__main__':
 # 1-Testar banco e forms(Criar doação)
 # 2- Bloquear Views para usuarios diferentes
 # 4-Validators(Doador,Recebedor)
-
 
 
 

@@ -22,7 +22,7 @@ class DoacaoForm(forms.ModelForm):
 class DoacaoRecForm(forms.ModelForm):
     class Meta:
         model = DoacaoRec
-        fields = ['data_combinada', 'quantidade'] #exclude?
+        fields = ['data_combinada', 'quantidade']
         labels = {
             'data_combinada':'Data de doação',
             'quantidade':'Quantidade',

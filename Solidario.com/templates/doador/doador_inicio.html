@@ -59,7 +59,100 @@
         .btn-doar:hover {
             background-color: #218838;
         }
+
+        .btn-pix {
+            display: inline-block;
+            padding: 10px 15px;
+            background-color: #007bff;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 16px;
+            margin-left: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .btn-pix:hover {
+            background-color: #0056b3;
+        }
+
+        /* Estilos do modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .modal-content {
+            background-color: #fff;
+            margin: 15% auto;
+            padding: 20px;
+            border-radius: 10px;
+            width: 300px;
+            text-align: center;
+        }
+
+        .modal-content p {
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+
+        .btn-copiar {
+            display: inline-block;
+            padding: 10px 15px;
+            background-color: #007bff;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .btn-copiar:hover {
+            background-color: #0056b3;
+        }
+
+        .btn-fechar {
+            background-color: #dc3545;
+            color: #fff;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-top: 10px;
+        }
+
+        .btn-fechar:hover {
+            background-color: #c82333;
+        }
     </style>
+    <script>
+        // Função para abrir o modal e exibir a chave Pix
+        function mostrarChavePix(element) {
+            const chavePix = element.getAttribute('data-pix');
+            document.getElementById('chavePixTexto').value = chavePix;
+            document.getElementById('modalPix').style.display = 'block';
+        }
+
+        // Função para copiar a chave Pix
+        function copiarChavePix() {
+            const chavePixTexto = document.getElementById('chavePixTexto');
+            chavePixTexto.select();
+            document.execCommand('copy');
+            alert("Chave Pix copiada para a área de transferência!");
+        }
+
+        // Função para fechar o modal
+        function fecharModal() {
+            document.getElementById('modalPix').style.display = 'none';
+        }
+    </script>
 </head>
 <body>
     <div class="container">
@@ -75,10 +168,23 @@
             <p><span class="modo_entrega">Modo de Entrega:</span> {{ doacao.get_modo_entrega_display }}</p>
             <p><span class="recebedor">Endereço:</span> {{ doacao.recebedor.cep }}</p>
             <a href="{% url 'doar' doacao.id %}" class="btn-doar">Doar</a>
+            <button class="btn-pix" data-pix="{{ doacao.recebedor.pix }}" onclick="mostrarChavePix(this)">Pix</button>
         </div>
         {% empty %}
         <p>Nenhuma doação encontrada.</p>
         {% endfor %}
+    </div>
+
+    <!-- Modal para exibir a chave Pix -->
+    <div id="modalPix" class="modal">
+        <div class="modal-content">
+            <p>Chave Pix do recebedor:</p>
+            <input type="text" id="chavePixTexto" readonly>
+            <br><br>
+            <button class="btn-copiar" onclick="copiarChavePix()">Copiar Chave Pix</button>
+            <br><br>
+            <button class="btn-fechar" onclick="fecharModal()">Fechar</button>
+        </div>
     </div>
 </body>
 </html>
