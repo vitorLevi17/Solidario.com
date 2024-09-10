@@ -20,7 +20,7 @@ def main():
 
 if __name__ == '__main__':
     main()
-#data combinada e horario
+
 # Parametrizar os status e suas visualizações
 # Ordenar por urgencia / Localização
 # Seguir template
