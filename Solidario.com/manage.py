@@ -28,7 +28,6 @@ if __name__ == '__main__':
 # 1.1-API para buscar endereço formatado
 # 1-Testar banco e forms(Criar doação)
 # 2- Bloquear Views para usuarios diferentes
-# 4-Validators(Doador,Recebedor)
 
 
 

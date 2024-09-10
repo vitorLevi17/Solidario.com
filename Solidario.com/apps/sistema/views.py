@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 from django.contrib import auth,messages
 from apps.doador.models import Doadores
 from apps.recebedores.models import Recebedores
-
+from validate_docbr import CPF,CNPJ
 def index(request):
     return render(request,'index.html')
 
@@ -54,6 +54,11 @@ def cadastro(request):
             cep = form["cep_cad"].value()
             telefone = form["telefone_cad"].value()
 
+            cpf_val = CPF()
+            if not cpf_val.validate(cpf):
+                messages.error(request, "CPF inválido")
+                return redirect('cadastro')
+
             if senha1 != senha2:
                 messages.error(request, "Senhas não coincidem")
                 return redirect('cadastro')
@@ -100,6 +105,12 @@ def cadastro_recebedor(request):
             cep = form["cep_cad"].value()
             telefone = form["telefone_cad"].value()
             pix = form["pix_cad"].value()
+
+            cnpj_val = CNPJ()
+            if not cnpj_val.validate(cnpj):
+                messages.error(request, "CNPJ inválido")
+                return redirect('cadastro')
+
 
             if senha1 != senha2:
                 messages.error(request, "Senhas não coincidem")
