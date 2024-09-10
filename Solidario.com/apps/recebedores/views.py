@@ -2,10 +2,12 @@ from django.shortcuts import render,redirect
 from django.utils import timezone
 from apps.doacao.forms import DoacaoForm
 from apps.recebedores.models import Recebedores
-
+from apps.doacao.models import DoacaoRec
 
 def recebedor_inicio(request):
-    return render(request,"recebedor/recebedor_inicio.html")
+    recebedor = Recebedores.objects.get(usuario = request.user)
+    doacoes = DoacaoRec.objects.filter(doacao_pedido__recebedor = recebedor)
+    return render(request,"recebedor/recebedor_inicio.html",{'doacoes':doacoes})
 
 def recebedor_criar_doacao(request):
     form = DoacaoForm

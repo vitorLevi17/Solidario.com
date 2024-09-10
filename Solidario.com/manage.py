@@ -20,10 +20,10 @@ def main():
 
 if __name__ == '__main__':
     main()
-
+#data combinada e horario
+# Parametrizar os status e suas visualizações
 # Ordenar por urgencia / Localização
 # Seguir template
-# Recebedor criar pedido com a quantidade de itens(doacao_rec.models)
 # fazer forms para os filtros de recebedores(Doações,Pedidos,Centros)
 # fazer forms para os filtros de doadores(Pedidos,Centros)
 # 1.1-API para buscar endereço formatado

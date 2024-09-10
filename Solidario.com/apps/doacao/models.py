@@ -47,6 +47,7 @@ class DoacaoRec(models.Model):
     doacao_pedido = models.ForeignKey(to=Doacao, on_delete=models.CASCADE, null=False, blank=False, related_name="doacao_pedido")
     item = models.ForeignKey(to=Item, on_delete=models.CASCADE, null=False, blank=False)
     quantidade = models.IntegerField(null=False, blank=False)
+    status = models.CharField(max_length=50, default="aberto")  # aberto, andamento, finalizado e cancelado
 
     # def validator(self):
     #     self.modo_entrega = self.doacao_pedido.modo_entrega
