@@ -1,9 +1,9 @@
-from django.shortcuts import render,redirect
-from django.utils import timezone
-from apps.doacao.forms import DoacaoForm
-from apps.recebedores.models import Recebedores
-from apps.doacao.models import DoacaoRec
 
+from django.shortcuts import render, redirect, get_object_or_404
+from django.utils import timezone
+from apps.doacao.forms import DoacaoForm,DoacaoRecForm
+from apps.recebedores.models import Recebedores
+from apps.doacao.models import DoacaoRec,Doacao
 def recebedor_inicio(request):
     recebedor = Recebedores.objects.get(usuario = request.user)
     doacoes = DoacaoRec.objects.filter(doacao_pedido__recebedor = recebedor)
@@ -24,3 +24,18 @@ def recebedor_criar_doacao(request):
             doacao.save()
             return redirect('recebedor_inicio')
     return render(request,"recebedor/recebedor_criar_doacao.html",{'form':form})
+
+
+def aceitar_doacao(request, doacao_id):
+        doacao_rec = get_object_or_404(DoacaoRec, id=doacao_id)
+        form = DoacaoRecForm(instance=doacao_rec)
+
+        if request.method == 'POST':
+            form = DoacaoRecForm(request.POST, instance=doacao_rec)
+            if form.is_valid():
+                doacao_rec = form.save(commit=False)
+                doacao_rec.status = "andamento"
+                doacao_rec.save()
+                return redirect('recebedor_inicio')
+
+        return render(request, 'recebedor/aceitar_doacao.html', {'form':form,'doacao': doacao_rec})

@@ -140,9 +140,8 @@
                         <p><strong>Modo de Entrega:</strong> {{ doacao.modo_entrega }}</p>
                         <p><strong>Endereço do Doador:</strong> {{ doacao.doador.cep }}</p>
                         <p><strong>Data abertura:</strong> {{ doacao.doacao_pedido.data_abertura }}</p>
-                        <a href="{% url 'doar' doacao.id %}" class="btn-doar">Aceitar</a>
-                        <a href="{% url 'doar' doacao.id %}" class="btn-doar">Alterar</a>
-                        <a href="{% url 'doar' doacao.id %}" class="btn-doar">Recusar</a>
+                        <a href="{% url 'aceitar_doacao' doacao.id %}" class="btn-doar">Aceitar</a>
+
                     </div>
                 {% endfor %}
             {% else %}
@@ -182,6 +181,13 @@
                     </button>
                 </a>
             </div>
+            {% if messages %}
+                <div class="error-message">
+                    {% for message in messages %}
+                        <p>{{ message }}</p>
+                    {% endfor %}
+                </div>
+            {% endif %}
         </div>
     </div>
 </body>

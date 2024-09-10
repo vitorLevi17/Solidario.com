@@ -20,10 +20,10 @@ def main():
 
 if __name__ == '__main__':
     main()
-
-# Parametrizar os status e suas visualizações
+# 1-(recebedor_inicio 145) cancelado
+# 1.1- recebedor_inicio (mostra doacoes_rec com status aberto)
+# 1.1-Parametrizar os status e suas visualizações(status aberto)
 # Ordenar por urgencia / Localização
-# Seguir template
 # fazer forms para os filtros de recebedores(Doações,Pedidos,Centros)
 # fazer forms para os filtros de doadores(Pedidos,Centros)
 # 1.1-API para buscar endereço formatado
