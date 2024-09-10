@@ -1,7 +1,8 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from apps.doacao.models import Doacao
-from apps.doacao.forms import DoacaoForm,DoacaoRecForm
+from apps.doacao.forms import DoacaoRecForm
 from apps.doador.models import Doadores
+from django.contrib import messages
 
 def doador_incio(request):
     doacoes = Doacao.objects.all()
@@ -15,6 +16,10 @@ def doar(request,doacao_id):
         if form.is_valid():
             doador = Doadores.objects.get(usuario=request.user)
             doacao_rec = form.save(commit=False)
+            if not doacao.quantidade >= doacao_rec.quantidade:
+                messages.error(request, "A quantidade de itens não pode ser maior que a cadastrada na doacao")
+                return redirect('doar', doacao_id=doacao.id)
+
 
             doacao_rec.doacao_pedido = doacao
             doacao_rec.modo_entrega = doacao.modo_entrega
