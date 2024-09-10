@@ -49,11 +49,6 @@ class DoacaoRec(models.Model):
     quantidade = models.IntegerField(null=False, blank=False)
     status = models.CharField(max_length=50, default="aberto")  # aberto, andamento, finalizado e cancelado
 
-    # def validator(self):
-    #     self.modo_entrega = self.doacao_pedido.modo_entrega
-    #     if self.quantidade > self.doacao_pedido.quantidade:
-    #         raise ValidationError('A quantidade recebida não pode ser maior que a quantidade doada.')
-
 
 
 
