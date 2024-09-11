@@ -65,7 +65,7 @@
                             <p><strong>Status:</strong> {{ recebimento.status }}</p>
 
                             <!-- Botão para confirmar recebimento -->
-                            {% if recebimento.status != "finalizado" %}
+                            {% if recebimento.status == "andamento" %}
                                 <form action="{% url 'confirmar_recebimento' recebimento.id %}" method="POST">
                                     {% csrf_token %}
                                     <button type="submit" class="btn btn-confirm">Confirmar Recebimento</button>

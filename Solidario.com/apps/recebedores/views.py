@@ -6,7 +6,7 @@ from apps.recebedores.models import Recebedores
 from apps.doacao.models import DoacaoRec,Doacao
 def recebedor_inicio(request):
     recebedor = Recebedores.objects.get(usuario = request.user)
-    doacoes = DoacaoRec.objects.filter(doacao_pedido__recebedor = recebedor)
+    doacoes = DoacaoRec.objects.filter(doacao_pedido__recebedor = recebedor,status="aberto")
     return render(request,"recebedor/recebedor_inicio.html",{'doacoes':doacoes})
 
 def recebedor_criar_doacao(request):
