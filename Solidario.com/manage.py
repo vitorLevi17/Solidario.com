@@ -20,14 +20,13 @@ def main():
 
 if __name__ == '__main__':
     main()
-#RECEBEDOR(ENTREGAS(Todas as movimentações do usuario) / Confirmar recebimento / PERFIL / CONFIGURAÇÕES)
+#Historico_Doador
+#RECEBEDOR(ENTREGAS(Todas as movimentações do usuario) / PERFIL / CONFIGURAÇÕES)
 #DOADOR(ENTREGAS(Todas as movimentações do usuario) / CALENDÁRIO / PERFIL / CONFIGURAÇÕES)
 #*Confirmar entrega
-# 1.1- recebedor_inicio (mostra só doacoes_rec com status aberto)
-# 1.1-Parametrizar os status e suas visualizações(só status aberto)
-# Ordenar por urgencia / Localização
 # fazer forms para os filtros de recebedores(Doações,Pedidos,Centros)
 # fazer forms para os filtros de doadores(Pedidos,Centros)
+# Ordenar por urgencia / Localização
 # 1.1-API para buscar endereço formatado
 # 2- Bloquear Views para usuarios diferentes
 
