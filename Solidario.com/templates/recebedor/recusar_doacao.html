@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recusar Doação</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px 0px #0000001a;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .btn-primary {
+            width: 100%;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Deseja mesmo recusar essa doação?</h1>
+        <form action="{% url 'recusar_doacao' doacao.id %}" method="POST">
+            {% csrf_token %}
+            <h3>Doador: {{ doacao.doador.nm_doador }}</h3>
+            <p><strong>Item da Doação:</strong> {{ doacao.item.nm_item }}</p>
+            <p><strong>Quantidade:</strong> {{ doacao.quantidade }}</p>
+            <p><strong>Data Combinada:</strong> {{ doacao.data_combinada }}</p>
+            <p><strong>Modo de Entrega:</strong> {{ doacao.modo_entrega }}</p>
+            <p><strong>Endereço do Doador:</strong> {{ doacao.doador.cep }}</p>
+            <p><strong>Data abertura:</strong> {{ doacao.doacao_pedido.data_abertura }}</p>
+
+            {% if messages %}
+                <div class="error-message">
+                    {% for message in messages %}
+                        <p>{{ message }}</p>
+                    {% endfor %}
+                </div>
+            {% endif %}
+
+            <button type="submit" class="btn btn-primary">Recusar Doação</button>
+        </form>
+    </div>
+</body>
+</html>

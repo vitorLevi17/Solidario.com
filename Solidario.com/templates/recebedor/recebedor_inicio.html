@@ -141,6 +141,7 @@
                         <p><strong>Endereço do Doador:</strong> {{ doacao.doador.cep }}</p>
                         <p><strong>Data abertura:</strong> {{ doacao.doacao_pedido.data_abertura }}</p>
                         <a href="{% url 'aceitar_doacao' doacao.id %}" class="btn-doar">Aceitar</a>
+                        <a href="{% url 'recusar_doacao' doacao.id %}" class="btn-doar">Recusar</a>
 
                     </div>
                 {% endfor %}

@@ -1,4 +1,3 @@
-
 from django.shortcuts import render, redirect, get_object_or_404
 from django.utils import timezone
 from apps.doacao.forms import DoacaoForm,DoacaoRecForm
@@ -25,7 +24,6 @@ def recebedor_criar_doacao(request):
             return redirect('recebedor_inicio')
     return render(request,"recebedor/recebedor_criar_doacao.html",{'form':form})
 
-
 def aceitar_doacao(request, doacao_id):
         doacao_rec = get_object_or_404(DoacaoRec, id=doacao_id)
         form = DoacaoRecForm(instance=doacao_rec)
@@ -39,3 +37,13 @@ def aceitar_doacao(request, doacao_id):
                 return redirect('recebedor_inicio')
 
         return render(request, 'recebedor/aceitar_doacao.html', {'form':form,'doacao': doacao_rec})
+
+def recusar_doacao(request, doacao_id):
+    doacao_rec = get_object_or_404(DoacaoRec,id=doacao_id)
+
+    if request.method == 'POST':
+            doacao_rec.status = "cancelado"
+            doacao_rec.save()
+            return redirect('recebedor_inicio')
+
+    return render(request,'recebedor/recusar_doacao.html',{'doacao':doacao_rec})

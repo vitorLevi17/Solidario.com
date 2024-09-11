@@ -5,7 +5,7 @@ from apps.doador.models import Doadores
 from django.contrib import messages
 
 def doador_incio(request):
-    doacoes = Doacao.objects.all()
+    doacoes = Doacao.objects.filter(status_doacao = "aberto")
     return render(request,"doador/doador_inicio.html",{"doacoes":doacoes})
 def doar(request,doacao_id):
     doacao = get_object_or_404(Doacao,id=doacao_id)
