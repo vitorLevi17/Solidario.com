@@ -61,7 +61,7 @@ def confirmar_recebimento(request, recebimento_id):
 
     if recebimento.status == "andamento":
 
-        recebimento.doador.historico_doacoes =+1
+        #recebimento.doador.historico_doacoes =+1
         recebimento.status = "finalizado"
         recebimento.data_rec = timezone.now()
         recebimento.save()
