@@ -2,8 +2,7 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Doações disponíveis</title>
+    <title>Status das Doações</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -132,60 +131,39 @@
             background-color: #c82333;
         }
     </style>
-    <script>
-        // Função para abrir o modal e exibir a chave Pix
-        function mostrarChavePix(element) {
-            const chavePix = element.getAttribute('data-pix');
-            document.getElementById('chavePixTexto').value = chavePix;
-            document.getElementById('modalPix').style.display = 'block';
-        }
-
-        // Função para copiar a chave Pix
-        function copiarChavePix() {
-            const chavePixTexto = document.getElementById('chavePixTexto');
-            chavePixTexto.select();
-            document.execCommand('copy');
-            alert("Chave Pix copiada para a área de transferência!");
-        }
-
-        // Função para fechar o modal
-        function fecharModal() {
-            document.getElementById('modalPix').style.display = 'none';
-        }
-    </script>
 </head>
 <body>
-    <div class="container">
-        <li><a href="{% url 'logout' %}"> Logout</a></li>
-        <li><a href="{% url 'status_doacoes' %}"> Doações</a></li>
-        <h1>Lista de Doações</h1>
-        {% for doacao in doacoes %}
-        <div class="doacao">
-            <h3>Doação {{ doacao.id }}</h3>
-            <p><span class="doacao_item">Item da Doação:</span> {{ doacao.item.nm_item }}</p>
-            <p><span class="doacao_item">Quantidade:</span> {{ doacao.quantidade }}</p>
-            <p><span class="recebedor">Recebedor:</span> {{ doacao.recebedor.nm_recebedor }}</p>
-            <p><span class="urgencia">Urgência:</span> {{ doacao.get_urgencia_display }}</p>
-            <p><span class="modo_entrega">Modo de Entrega:</span> {{ doacao.get_modo_entrega_display }}</p>
-            <p><span class="recebedor">Endereço:</span> {{ doacao.recebedor.cep }}</p>
-            <a href="{% url 'doar' doacao.id %}" class="btn-doar">Doar</a>
-            <button class="btn-pix" data-pix="{{ doacao.recebedor.pix }}" onclick="mostrarChavePix(this)">Pix</button>
-        </div>
-        {% empty %}
-        <p>Nenhuma doação encontrada.</p>
-        {% endfor %}
-    </div>
-
-    <!-- Modal para exibir a chave Pix -->
-    <div id="modalPix" class="modal">
-        <div class="modal-content">
-            <p>Chave Pix do recebedor:</p>
-            <input type="text" id="chavePixTexto" readonly>
-            <br><br>
-            <button class="btn-copiar" onclick="copiarChavePix()">Copiar Chave Pix</button>
-            <br><br>
-            <button class="btn-fechar" onclick="fecharModal()">Fechar</button>
-        </div>
-    </div>
+    <h1>Status das Doações</h1>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Item</th>
+                <th>Quantidade</th>
+                <th>Modo de Entrega</th>
+                <th>Data Combinada</th>
+                <th>Data de Recebimento</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for doacao in doacao_rec %}
+            <tr>
+                <td>{{ doacao.id }}</td>
+                <td>{{ doacao.item.nm_item }}</td>
+                <td>{{ doacao.quantidade }}</td>
+                <td>{{ doacao.modo_entrega }}</td>
+                <td>{{ doacao.data_combinada }}</td>
+                <td>{{ doacao.data_rec }}</td>
+                <td>{{ doacao.status }}</td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="7">Nenhuma doação recebida.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a href="{% url 'doador_inicio' %}">Voltar para a página inicial</a>
 </body>
 </html>

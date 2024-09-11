@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from apps.doacao.models import Doacao
+from apps.doacao.models import Doacao,DoacaoRec
 from apps.doacao.forms import DoacaoRecForm
 from apps.doador.models import Doadores
 from django.contrib import messages
@@ -30,3 +30,10 @@ def doar(request,doacao_id):
 
 
     return render(request,"doador/doar.html",{'form':form,'doacao':doacao})
+
+def status_doacoes(request):
+    doador = get_object_or_404(Doadores, usuario=request.user)
+    doacao_rec = DoacaoRec.objects.filter(doador=doador)  # Corrigido para buscar todas as doações
+    return render(request, 'doador/status_doacoes.html', {'doacao_rec': doacao_rec})
+
+
