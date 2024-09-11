@@ -20,8 +20,10 @@ def main():
 
 if __name__ == '__main__':
     main()
-
-# 1-(recebedor_inicio 145) cancelado
+#RECEBEDOR(ENTREGAS / Confirmar recebimento / PERFIL / CONFIGURAÇÕES)
+#DOADOR(ENTREGAS / CALENDÁRIO / PERFIL / CONFIGURAÇÕES)
+# Confirmar recebimento(Doacao e DoacaoRec)
+#*Confirmar entrega
 # 1.1- recebedor_inicio (mostra só doacoes_rec com status aberto)
 # 1.1-Parametrizar os status e suas visualizações(só status aberto)
 # Ordenar por urgencia / Localização

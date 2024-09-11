@@ -47,3 +47,7 @@ def recusar_doacao(request, doacao_id):
             return redirect('recebedor_inicio')
 
     return render(request,'recebedor/recusar_doacao.html',{'doacao':doacao_rec})
+
+def entregas(request,doacao_id):
+    #finalizar
+    return render(request,'recebedor/entregas.html')
