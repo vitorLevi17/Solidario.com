@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirmar Recebimento de Doações</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f4f4f4;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            margin-top: 20px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .doacao {
+            cursor: pointer;
+            padding: 10px;
+            border: 1px solid #ddd;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            background-color: #f8f9fa;
+        }
+        .doacao:hover {
+            background-color: #e9ecef;
+        }
+        .recebimento {
+            display: none;
+            padding: 10px;
+            border: 1px solid #ccc;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            background-color: #e9ecef;
+        }
+        .btn-confirm {
+            background-color: #28a745;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Minhas Doações</h1>
+
+        <!-- Loop de doações -->
+        <div>
+            {% if doacoes %}
+                {% for doacao in doacoes %}
+                    <div class="doacao" onclick="toggleRecebimentos('recebimentos-{{ doacao.id }}')">
+                        <h3>{{ doacao.item.nm_item }} ({{ doacao.quantidade }} unidades)</h3>
+                        <p><strong>Status:</strong> {{ doacao.status_doacao }}</p>
+                        <p><strong>Urgência:</strong> {{ doacao.urgencia }}</p>
+                        <p><strong>Modo de Entrega:</strong> {{ doacao.modo_entrega }}</p>
+                    </div>
+
+                    <!-- Recebimentos relacionados à doação -->
+                    <div id="recebimentos-{{ doacao.id }}" class="recebimento">
+                        {% for recebimento in doacao.doacao_pedido.all %}
+                            <p><strong>Doador:</strong> {{ recebimento.doador.nm_doador }}</p>
+                            <p><strong>Data Combinada:</strong> {{ recebimento.data_combinada }}</p>
+                            <p><strong>Status:</strong> {{ recebimento.status }}</p>
+
+                            <!-- Botão para confirmar recebimento -->
+                            {% if recebimento.status != "finalizado" %}
+                                <form action="{% url 'confirmar_recebimento' recebimento.id %}" method="POST">
+                                    {% csrf_token %}
+                                    <button type="submit" class="btn btn-confirm">Confirmar Recebimento</button>
+                                </form>
+                            {% endif %}
+                            <hr>
+                        {% endfor %}
+                    </div>
+                {% endfor %}
+            {% else %}
+                <p>Você não cadastrou nenhuma doação ainda.</p>
+            {% endif %}
+        </div>
+    </div>
+
+    <script>
+        function toggleRecebimentos(id) {
+            const element = document.getElementById(id);
+            if (element.style.display === "none" || element.style.display === "") {
+                element.style.display = "block";
+            } else {
+                element.style.display = "none";
+            }
+        }
+    </script>
+</body>
+</html>

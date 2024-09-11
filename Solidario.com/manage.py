@@ -20,8 +20,8 @@ def main():
 
 if __name__ == '__main__':
     main()
-#RECEBEDOR(ENTREGAS / Confirmar recebimento / PERFIL / CONFIGURAÇÕES)
-#DOADOR(ENTREGAS / CALENDÁRIO / PERFIL / CONFIGURAÇÕES)
+#RECEBEDOR(ENTREGAS(Todas as movimentações do usuario) / Confirmar recebimento / PERFIL / CONFIGURAÇÕES)
+#DOADOR(ENTREGAS(Todas as movimentações do usuario) / CALENDÁRIO / PERFIL / CONFIGURAÇÕES)
 # Confirmar recebimento(Doacao e DoacaoRec)
 #*Confirmar entrega
 # 1.1- recebedor_inicio (mostra só doacoes_rec com status aberto)

@@ -10,8 +10,8 @@ class Recebedores(models.Model):
     telefone = models.CharField(max_length=13, null=False, blank=False, unique=True)
     complemento = models.CharField(max_length=255,null=False,blank=False,default="Rua de trás")
 
-    # def __str__(self):
-    #     return self.usuario
+    def __str__(self):
+        return self.nm_recebedor
 
 
 

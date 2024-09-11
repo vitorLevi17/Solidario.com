@@ -1,3 +1,4 @@
+from django.contrib import messages
 from django.shortcuts import render, redirect, get_object_or_404
 from django.utils import timezone
 from apps.doacao.forms import DoacaoForm,DoacaoRecForm
@@ -48,6 +49,28 @@ def recusar_doacao(request, doacao_id):
 
     return render(request,'recebedor/recusar_doacao.html',{'doacao':doacao_rec})
 
-def entregas(request,doacao_id):
+def receber_doacao(request):
+    recebedor = Recebedores.objects.get(usuario=request.user)
+
+    doacoes = Doacao.objects.filter(recebedor=recebedor,status_doacao='aberto')
+
+    return render(request, 'recebedor/receber_doacao.html', {'doacoes':doacoes})
+
+def confirmar_recebimento(request, recebimento_id):
+    recebimento = get_object_or_404(DoacaoRec, id=recebimento_id,status='andamento')
+
+    if recebimento.status == "andamento":
+
+        recebimento.doador.historico_doacoes =+1
+        recebimento.status = "finalizado"
+        recebimento.data_rec = timezone.now()
+        recebimento.save()
+
+        messages.success(request, 'Recebimento confirmado com sucesso!')
+    else:
+        messages.error(request, 'Este recebimento já foi finalizado.')
+
+    return redirect('receber_doacao')
+def entregas(request):
     #finalizar
     return render(request,'recebedor/entregas.html')

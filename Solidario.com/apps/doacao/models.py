@@ -1,4 +1,3 @@
-from django.core.exceptions import ValidationError
 from django.db import models
 from datetime import datetime
 from apps.recebedores.models import Recebedores
@@ -33,7 +32,7 @@ class Doacao(models.Model):
 
     urgencia = models.CharField(max_length=50,choices=urgencias)
     modo_entrega = models.CharField(max_length=50,choices=modos_entrega)
-    status_doacao = models.CharField(max_length=50,default="aberto") #aberto, andamento, finalizado e cancelado
+    status_doacao = models.CharField(max_length=50,default="aberto") #aberto, (finalizado, cancelado ENTREGAS.DOADOR)
     data_abertura = models.DateTimeField(default=datetime.now)
     quantidade = models.IntegerField(null=False,blank=False)
     recebedor = models.ForeignKey(to=Recebedores,on_delete=models.CASCADE,null=False,blank=False,related_name="recebedor_doacao")
