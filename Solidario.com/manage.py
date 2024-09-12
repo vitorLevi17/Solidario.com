@@ -21,7 +21,7 @@ def main():
 if __name__ == '__main__':
     main()
 #Historico_Doador
-#RECEBEDOR(ENTREGAS(Todas as movimentações do usuario) / PERFIL / CONFIGURAÇÕES)
+#RECEBEDOR(PERFIL / CONFIGURAÇÕES)
 #DOADOR(ENTREGAS(Todas as movimentações do usuario) / CALENDÁRIO / PERFIL / CONFIGURAÇÕES)
 #*Confirmar entrega
 # fazer forms para os filtros de recebedores(Doações,Pedidos,Centros)

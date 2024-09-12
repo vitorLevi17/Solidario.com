@@ -1,19 +1,63 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Solidário.com</title>
-    <link rel="stylesheet" href="styles.css">
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        .logo h1 {
+            font-size: 2rem;
+            color: #000;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            gap: 15px;
+        }
+
+        nav ul li a {
+            color: #000;
+            text-decoration: none;
+            font-size: 1rem;
+        }
+
+        nav ul li a:hover {
+            text-decoration: underline;
+        }
+
+        .social-media a {
+            color: #007bff;
+        }
+
+        .icons img {
+            width: 24px;
+            margin-right: 10px;
+        }
+
+        .content img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+    </style>
 </head>
 <body>
-    <header>
-        <div class="container">
+
+    <!-- Header -->
+    <header class="bg-light py-3 mb-4">
+        <div class="container d-flex justify-content-between align-items-center">
             <div class="logo">
                 <h1>SOLIDÁRIO.COM</h1>
             </div>
             <nav>
-                <ul>
+                <ul class="d-flex">
                     <li><a href="#">QUEM SOMOS</a></li>
                     <li><a href="#">COMO FUNCIONAMOS</a></li>
                     {% if user.is_authenticated %}
@@ -25,13 +69,18 @@
             </nav>
         </div>
     </header>
-    <main>
-        <div class="content">
-            <img src="volunteers.jpg" alt="Volunteers">
+
+    <!-- Main Content -->
+    <main class="container text-center">
+        <div class="content mb-4">
+            <img src="{% static 'photos/volunteers.jpeg' %}" class="img-fluid" alt="Volunteers">
+
         </div>
     </main>
-    <footer>
-        <div class="container">
+
+    <!-- Footer -->
+    <footer class="bg-light py-3 mt-4">
+        <div class="container d-flex justify-content-between align-items-center">
             <div class="social-media">
                 <a href="#">@SOLIDÁRIO.COM</a>
             </div>
@@ -43,5 +92,10 @@
             </div>
         </div>
     </footer>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
