@@ -71,6 +71,20 @@ def confirmar_recebimento(request, recebimento_id):
         messages.error(request, 'Este recebimento já foi finalizado.')
 
     return redirect('receber_doacao')
-def entregas(request):
-    #finalizar
-    return render(request,'recebedor/entregas.html')
+
+def finalizar_pedido_doacao(request,doacao_id):
+    doacao = get_object_or_404(Doacao,id=doacao_id,status_doacao = "aberto")
+
+    doacao.status_doacao = "finalizado"
+    doacao.save()
+    messages.success(request,"Seu pedido de doacao foi finalizado")
+    return redirect('receber_doacao')
+
+def cancelar_pedido_doacao(request,doacao_id):
+    doacao = get_object_or_404(Doacao, id=doacao_id, status_doacao="aberto")
+
+    doacao.status_doacao = "cancelado"
+    doacao.save()
+    messages.success(request, "Seu pedido de doacao foi cancelado")
+    return redirect('receber_doacao')
+

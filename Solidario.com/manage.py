@@ -20,10 +20,11 @@ def main():
 
 if __name__ == '__main__':
     main()
-#Historico_Doador
-#DOACAO FINALIZAR/ ABERTO / CANCELAR
+
+#DOACAO FINALIZAR/ ABERTO / CANCELAR*
 #RECEBEDOR(PERFIL / CONFIGURAÇÕES)
-#DOADOR(ENTREGAS(Todas as movimentações do usuario) / CALENDÁRIO / PERFIL / CONFIGURAÇÕES)
+#Notificar doador(signals)
+#DOADOR(ENTREGAS / CALENDÁRIO / PERFIL / CONFIGURAÇÕES)
 # fazer forms para os filtros de recebedores(Doações,Pedidos,Centros)
 # fazer forms para os filtros de doadores(Pedidos,Centros)
 # Ordenar por urgencia / Localização

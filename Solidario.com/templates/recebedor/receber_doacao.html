@@ -55,6 +55,8 @@
                         <p><strong>Status:</strong> {{ doacao.status_doacao }}</p>
                         <p><strong>Urgência:</strong> {{ doacao.urgencia }}</p>
                         <p><strong>Modo de Entrega:</strong> {{ doacao.modo_entrega }}</p>
+                        <a href="{% url 'finalizar_pedido_doacao' doacao.id%}" class="btn-doar">Finalizar Doacao</a>
+                        <a href="{% url 'cancelar_pedido_doacao' doacao.id%}" class="btn-doar">Cancelar Doacao</a>
                     </div>
 
                     <!-- Recebimentos relacionados à doação -->
