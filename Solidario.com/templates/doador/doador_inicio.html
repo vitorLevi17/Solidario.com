@@ -3,81 +3,135 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Doações disponíveis</title>
+    <title>Doações Disponíveis - Solidário.com</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
+        :root {
+            --primary-color: #ff6b6b;
+            --secondary-color: #4ecdc4;
+            --accent-color: #f7fff7;
+            --dark-color: #1a535c;
+            --light-color: #ffe66d;
+        }
+
+        * {
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--accent-color);
+            color: var(--dark-color);
+            line-height: 1.6;
         }
 
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 20px;
-            background-color: #fff;
-            border-radius: 10px;
+        }
+
+        header {
+            background-color: var(--primary-color);
+            padding: 20px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        nav ul {
+            list-style-type: none;
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        nav ul li {
+            margin-left: 20px;
+        }
+
+        nav ul li a {
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: var(--light-color);
         }
 
         h1 {
             text-align: center;
-            margin-bottom: 20px;
+            margin: 40px 0;
+            color: var(--primary-color);
+            font-size: 2.5em;
+        }
+
+        .doacoes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
         }
 
         .doacao {
-            border: 1px solid #ccc;
-            padding: 15px;
-            margin-bottom: 20px;
-            border-radius: 5px;
-            background-color: #e9ecef;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .doacao:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
         }
 
         .doacao h3 {
-            margin-top: 0;
+            color: var(--primary-color);
+            margin-bottom: 15px;
         }
 
         .doacao p {
-            margin: 5px 0;
+            margin: 10px 0;
         }
 
-        .doacao .item, .doacao .recebedor {
+        .doacao .label {
             font-weight: bold;
+            color: var(--dark-color);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 15px;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            cursor: pointer;
         }
 
         .btn-doar {
-            display: inline-block;
-            padding: 10px 15px;
-            background-color: #28a745;
-            color: #fff;
-            text-decoration: none;
-            border-radius: 5px;
-            font-size: 16px;
-            transition: background-color 0.3s;
+            background-color: var(--secondary-color);
+            color: var(--accent-color);
         }
 
         .btn-doar:hover {
-            background-color: #218838;
+            background-color: #3db8af;
+            transform: translateY(-2px);
         }
 
         .btn-pix {
-            display: inline-block;
-            padding: 10px 15px;
-            background-color: #007bff;
-            color: #fff;
-            text-decoration: none;
-            border-radius: 5px;
-            font-size: 16px;
+            background-color: var(--primary-color);
+            color: var(--accent-color);
             margin-left: 10px;
-            cursor: pointer;
-            transition: background-color 0.3s;
         }
 
         .btn-pix:hover {
-            background-color: #0056b3;
+            background-color: #ff5252;
+            transform: translateY(-2px);
         }
 
-        /* Estilos do modal */
         .modal {
             display: none;
             position: fixed;
@@ -92,55 +146,103 @@
         .modal-content {
             background-color: #fff;
             margin: 15% auto;
-            padding: 20px;
+            padding: 30px;
             border-radius: 10px;
             width: 300px;
             text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
 
         .modal-content p {
             margin-bottom: 15px;
             font-size: 18px;
+            color: var(--dark-color);
         }
 
         .btn-copiar {
-            display: inline-block;
-            padding: 10px 15px;
-            background-color: #007bff;
-            color: #fff;
-            text-decoration: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s;
+            background-color: var(--secondary-color);
+            color: var(--accent-color);
         }
 
         .btn-copiar:hover {
-            background-color: #0056b3;
+            background-color: #3db8af;
         }
 
         .btn-fechar {
-            background-color: #dc3545;
-            color: #fff;
-            padding: 10px 15px;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s;
+            background-color: var(--primary-color);
+            color: var(--accent-color);
             margin-top: 10px;
         }
 
         .btn-fechar:hover {
-            background-color: #c82333;
+            background-color: #ff5252;
+        }
+
+        #chavePixTexto {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid var(--secondary-color);
+            border-radius: 5px;
+            font-size: 16px;
+            margin-bottom: 15px;
+        }
+
+        .empty-message {
+            text-align: center;
+            font-size: 18px;
+            color: var(--dark-color);
+            margin-top: 40px;
         }
     </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <ul>
+                <li><a href="{% url 'logout' %}">Logout</a></li>
+                <li><a href="{% url 'status_doacoes' %}">Minhas Doações</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        <h1>Doações Disponíveis</h1>
+
+        <div class="doacoes-grid">
+            {% for doacao in doacoes %}
+            <div class="doacao">
+                <h3>Doação {{ doacao.id }}</h3>
+                <p><span class="label">Item:</span> {{ doacao.item.nm_item }}</p>
+                <p><span class="label">Quantidade:</span> {{ doacao.quantidade }}</p>
+                <p><span class="label">Recebedor:</span> {{ doacao.recebedor.nm_recebedor }}</p>
+                <p><span class="label">Urgência:</span> {{ doacao.get_urgencia_display }}</p>
+                <p><span class="label">Modo de Entrega:</span> {{ doacao.get_modo_entrega_display }}</p>
+                <p><span class="label">Endereço:</span> {{ doacao.recebedor.cep }}</p>
+                <a href="{% url 'doar' doacao.id %}" class="btn btn-doar">Doar</a>
+                <button class="btn btn-pix" data-pix="{{ doacao.recebedor.pix }}" onclick="mostrarChavePix(this)">Pix</button>
+            </div>
+            {% empty %}
+            <p class="empty-message">Nenhuma doação encontrada no momento.</p>
+            {% endfor %}
+        </div>
+    </div>
+
+    <div id="modalPix" class="modal">
+        <div class="modal-content">
+            <p>Chave Pix do recebedor:</p>
+            <input type="text" id="chavePixTexto" readonly>
+            <button class="btn btn-copiar" onclick="copiarChavePix()">Copiar Chave Pix</button>
+            <button class="btn btn-fechar" onclick="fecharModal()">Fechar</button>
+        </div>
+    </div>
+
     <script>
-        // Função para abrir o modal e exibir a chave Pix
         function mostrarChavePix(element) {
             const chavePix = element.getAttribute('data-pix');
             document.getElementById('chavePixTexto').value = chavePix;
             document.getElementById('modalPix').style.display = 'block';
         }
 
-        // Função para copiar a chave Pix
         function copiarChavePix() {
             const chavePixTexto = document.getElementById('chavePixTexto');
             chavePixTexto.select();
@@ -148,44 +250,16 @@
             alert("Chave Pix copiada para a área de transferência!");
         }
 
-        // Função para fechar o modal
         function fecharModal() {
             document.getElementById('modalPix').style.display = 'none';
         }
-    </script>
-</head>
-<body>
-    <div class="container">
-        <li><a href="{% url 'logout' %}"> Logout</a></li>
-        <li><a href="{% url 'status_doacoes' %}"> Doações</a></li>
-        <h1>Lista de Doações</h1>
-        {% for doacao in doacoes %}
-        <div class="doacao">
-            <h3>Doação {{ doacao.id }}</h3>
-            <p><span class="doacao_item">Item da Doação:</span> {{ doacao.item.nm_item }}</p>
-            <p><span class="doacao_item">Quantidade:</span> {{ doacao.quantidade }}</p>
-            <p><span class="recebedor">Recebedor:</span> {{ doacao.recebedor.nm_recebedor }}</p>
-            <p><span class="urgencia">Urgência:</span> {{ doacao.get_urgencia_display }}</p>
-            <p><span class="modo_entrega">Modo de Entrega:</span> {{ doacao.get_modo_entrega_display }}</p>
-            <p><span class="recebedor">Endereço:</span> {{ doacao.recebedor.cep }}</p>
-            <a href="{% url 'doar' doacao.id %}" class="btn-doar">Doar</a>
-            <button class="btn-pix" data-pix="{{ doacao.recebedor.pix }}" onclick="mostrarChavePix(this)">Pix</button>
-        </div>
-        {% empty %}
-        <p>Nenhuma doação encontrada.</p>
-        {% endfor %}
-    </div>
 
-    <!-- Modal para exibir a chave Pix -->
-    <div id="modalPix" class="modal">
-        <div class="modal-content">
-            <p>Chave Pix do recebedor:</p>
-            <input type="text" id="chavePixTexto" readonly>
-            <br><br>
-            <button class="btn-copiar" onclick="copiarChavePix()">Copiar Chave Pix</button>
-            <br><br>
-            <button class="btn-fechar" onclick="fecharModal()">Fechar</button>
-        </div>
-    </div>
+        // Fechar o modal ao clicar fora dele
+        window.onclick = function(event) {
+            if (event.target == document.getElementById('modalPix')) {
+                fecharModal();
+            }
+        }
+    </script>
 </body>
 </html>

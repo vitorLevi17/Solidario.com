@@ -24,7 +24,6 @@ if __name__ == '__main__':
 #DOACAO FINALIZAR/ ABERTO / CANCELAR
 #RECEBEDOR(PERFIL / CONFIGURAÇÕES)
 #DOADOR(ENTREGAS(Todas as movimentações do usuario) / CALENDÁRIO / PERFIL / CONFIGURAÇÕES)
-#*Confirmar entrega
 # fazer forms para os filtros de recebedores(Doações,Pedidos,Centros)
 # fazer forms para os filtros de doadores(Pedidos,Centros)
 # Ordenar por urgencia / Localização
