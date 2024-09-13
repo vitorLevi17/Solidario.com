@@ -1,101 +1,336 @@
-{% load static %}
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Solidário.com</title>
-    <!-- Bootstrap CSS -->
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-
+    <title>Solidário.com - Conectando Corações</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
-        .logo h1 {
-            font-size: 2rem;
-            color: #000;
+        :root {
+            --primary-color: #ff6b6b;
+            --secondary-color: #4ecdc4;
+            --accent-color: #f7fff7;
+            --dark-color: #1a535c;
+            --light-color: #ffe66d;
         }
 
-        nav ul {
-            list-style: none;
-            padding: 0;
+        * {
             margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.6;
+            color: var(--dark-color);
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: var(--accent-color);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        header.scrolled {
+            background: rgba(255, 107, 107, 0.9);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        nav {
             display: flex;
-            gap: 15px;
+            justify-content: space-between;
+            align-items: center;
         }
 
-        nav ul li a {
-            color: #000;
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--accent-color);
             text-decoration: none;
-            font-size: 1rem;
+            font-weight: 600;
+            transition: color 0.3s ease;
         }
 
-        nav ul li a:hover {
-            text-decoration: underline;
+        .nav-links a:hover {
+            color: var(--light-color);
         }
 
-        .social-media a {
-            color: #007bff;
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            color: var(--accent-color);
+            position: relative;
+            overflow: hidden;
         }
 
-        .icons img {
-            width: 24px;
-            margin-right: 10px;
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%23ffffff' fill-opacity='0.1' d='M0,128L48,122.7C96,117,192,107,288,122.7C384,139,480,181,576,181.3C672,181,768,139,864,122.7C960,107,1056,117,1152,138.7C1248,160,1344,192,1392,208L1440,224L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'%3E%3C/path%3E%3C/svg%3E") no-repeat bottom center;
+            background-size: cover;
         }
 
-        .content img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 8px;
+        .hero-content {
+            max-width: 800px;
+            z-index: 1;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease 0.5s both;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            background-color: var(--accent-color);
+            color: var(--primary-color);
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            animation: fadeInUp 1s ease 1s both;
+        }
+
+        .btn:hover {
+            background-color: var(--light-color);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .features {
+            padding: 5rem 0;
+            background-color: var(--accent-color);
+        }
+
+        .features h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-item {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .feature-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        .feature-item h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        footer {
+            background-color: var(--dark-color);
+            color: var(--accent-color);
+            padding: 3rem 0;
+            text-align: center;
+        }
+
+        .social-links {
+            margin-top: 2rem;
+        }
+
+        .social-links a {
+            color: var(--accent-color);
+            font-size: 1.5rem;
+            margin: 0 1rem;
+            transition: color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: var(--light-color);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
         }
     </style>
 </head>
 <body>
-
-    <!-- Header -->
-    <header class="bg-light py-3 mb-4">
-        <div class="container d-flex justify-content-between align-items-center">
-            <div class="logo">
-                <h1>SOLIDÁRIO.COM</h1>
-            </div>
-            <nav>
-                <ul class="d-flex">
-                    <li><a href="#">QUEM SOMOS</a></li>
-                    <li><a href="#">COMO FUNCIONAMOS</a></li>
-                    {% if user.is_authenticated %}
-                        <li><a href="{% url 'logout' %}"> Logout</a></li>
-                    {% else %}
-                        <li><a href="{% url 'login' %}">LOGIN</a></li>
-                    {% endif %}
-                </ul>
-            </nav>
-        </div>
+    <header>
+        <nav class="container">
+            <div class="logo">SOLIDÁRIO.COM</div>
+            <ul class="nav-links">
+                <li><a href="#quem-somos">Quem Somos</a></li>
+                <li><a href="#como-funciona">Como Funciona</a></li>
+                <li><a href="#" id="loginLink">Login</a></li>
+            </ul>
+        </nav>
     </header>
 
-    <!-- Main Content -->
-    <main class="container text-center">
-        <div class="content mb-4">
-            <img src="{% static 'photos/volunteers.jpeg' %}" class="img-fluid" alt="Volunteers">
+    <main>
+        <section class="hero">
+            <div class="hero-content container">
+                <h1>Transforme Vidas com um Gesto</h1>
+                <p>Conectamos doadores a instituições filantrópicas para criar um impacto positivo na sociedade</p>
+                <a href="#" class="btn">Comece a Doar Agora</a>
+            </div>
+        </section>
 
-        </div>
+        <section id="como-funciona" class="features">
+            <div class="container">
+                <h2>Como Funciona</h2>
+                <div class="feature-grid">
+                    <div class="feature-item">
+                        <div class="feature-icon">&#128270;</div>
+                        <h3>Encontre Instituições</h3>
+                        <p>Descubra instituições filantrópicas próximas a você que precisam de doações</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">&#129309;</div>
+                        <h3>Doe com Facilidade</h3>
+                        <p>Processo simples e rápido para doar seus itens diretamente às instituições</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">&#128200;</div>
+                        <h3>Acompanhe o Impacto</h3>
+                        <p>Veja o impacto real de suas doações na vida das pessoas e comunidades</p>
+                    </div>
+                </div>
+            </div>
+        </section>
     </main>
 
-    <!-- Footer -->
-    <footer class="bg-light py-3 mt-4">
-        <div class="container d-flex justify-content-between align-items-center">
-            <div class="social-media">
-                <a href="#">@SOLIDÁRIO.COM</a>
-            </div>
-            <div class="icons">
-                <a href="#"><img src="instagram-icon.png" alt="Instagram"></a>
-                <a href="#"><img src="whatsapp-icon.png" alt="WhatsApp"></a>
-                <a href="#"><img src="x-icon.png" alt="X"></a>
-                <a href="#"><img src="linkedin-icon.png" alt="LinkedIn"></a>
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 SOLIDÁRIO.COM. Todos os direitos reservados.</p>
+            <div class="social-links">
+                <a href="#" aria-label="Facebook">&#xf39e;</a>
+                <a href="#" aria-label="Instagram">&#xf16d;</a>
+                <a href="#" aria-label="Twitter">&#xf099;</a>
+                <a href="#" aria-label="LinkedIn">&#xf0e1;</a>
             </div>
         </div>
     </footer>
 
-    <!-- Bootstrap JS and dependencies -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const loginLink = document.getElementById('loginLink');
+            const header = document.querySelector('header');
+
+            loginLink.addEventListener('click', function(e) {
+                e.preventDefault();
+                const isAuthenticated = false; // Exemplo: altere para true para simular um usuário autenticado
+
+                if (isAuthenticated) {
+                    window.location.href = '/logout/';
+                } else {
+                    window.location.href = '/login/';
+                }
+            });
+
+            // Header com efeito de scroll
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+            });
+
+            // Animação de entrada para os itens de features
+            const featureItems = document.querySelectorAll('.feature-item');
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = 1;
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+
+            featureItems.forEach(item => {
+                item.style.opacity = 0;
+                item.style.transform = 'translateY(20px)';
+                item.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                observer.observe(item);
+            });
+        });
+    </script>
 </body>
 </html>
