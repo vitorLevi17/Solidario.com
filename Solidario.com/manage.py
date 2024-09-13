@@ -21,7 +21,6 @@ def main():
 if __name__ == '__main__':
     main()
 
-#DOACAO FINALIZAR/ ABERTO / CANCELAR*
 #RECEBEDOR(PERFIL / CONFIGURAÇÕES)
 #Notificar doador(signals)
 #DOADOR(ENTREGAS / CALENDÁRIO / PERFIL / CONFIGURAÇÕES)
