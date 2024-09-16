@@ -21,6 +21,7 @@ def main():
 if __name__ == '__main__':
     main()
 
+# gerar nova secret key e debug = true settigns.py
 #RECEBEDOR(PERFIL / CONFIGURAÇÕES)
 #Notificar doador(signals)
 #DOADOR(ENTREGAS / CALENDÁRIO / PERFIL / CONFIGURAÇÕES)
