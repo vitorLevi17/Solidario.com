@@ -34,7 +34,7 @@ def login(request):
                     return redirect('recebedor_inicio')
             else:
                 messages.error(request,"Usuario ou senha incorretos")
-                return redirect('login')
+                return render(request, 'login.html', {"form": form})
 
 
     return render(request,'login.html',{"form":form})
