@@ -129,7 +129,28 @@
         </div>
 <li><a href="{% url 'logout' %}" style="color: white;">Logout</a></li>
 
-        <div class="doacoes-list">
+        <!-- Barra de busca -->
+        <div class="search-bar">
+            <input type="text" placeholder="Buscar instituição...">
+        </div>
+
+        <!-- Botões de navegação -->
+        <div class="nav-buttons">
+            <button>Perfil</button>
+            <button>Configurações</button>
+            <a href="{% url 'receber_doacao' %}" class="btn-doar">Receber Doacao</a>
+            <button>Calendário</button>
+        </div>
+
+
+            <div>
+                <a href="{% url 'recebedor_criar_doacao' %}" style="width: 100%; display: block; text-decoration: none;">
+                    <button style="width: 100%; padding: 10px; background-color: #007bff; color: white; border: none; border-radius: 5px;">
+                        Adicionar Pedido
+                    </button>
+                </a>
+            </div>
+            <div class="doacoes-list">
             {% if doacoes %}
                 {% for doacao in doacoes %}
                     <div class="doacao">
@@ -149,39 +170,6 @@
                 <p>Nenhuma doação encontrada.</p>
             {% endif %}
         </div>
-
-        <!-- Barra de busca -->
-        <div class="search-bar">
-            <input type="text" placeholder="Buscar instituição...">
-        </div>
-
-        <!-- Botões de navegação -->
-        <div class="nav-buttons">
-            <button>Perfil</button>
-            <button>Configurações</button>
-            <a href="{% url 'receber_doacao' %}" class="btn-doar">Receber Doacao</a>
-            <button>Calendário</button>
-        </div>
-
-        <!-- Filtros -->
-        <div class="filters">
-            <div>
-                <span class="filter-label">Filtros</span>
-                <div class="filter-options">
-                    <label><input type="checkbox"> Doações</label>
-                    <label><input type="checkbox"> Pedidos</label>
-                    <label><input type="checkbox"> Centros</label>
-                </div>
-            </div>
-
-            <!-- Adicionar Pedido -->
-            <div>
-                <a href="{% url 'recebedor_criar_doacao' %}" style="width: 100%; display: block; text-decoration: none;">
-                    <button style="width: 100%; padding: 10px; background-color: #007bff; color: white; border: none; border-radius: 5px;">
-                        Adicionar Pedido
-                    </button>
-                </a>
-            </div>
             {% if messages %}
                 <div class="error-message">
                     {% for message in messages %}

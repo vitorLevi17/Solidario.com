@@ -23,7 +23,8 @@ if __name__ == '__main__':
 
 # messagem de erro login
 # gerar nova secret key e debug = true settigns.py
-#Hospedar sistema
+# Hospedar sistema
+# Validação de data
 #RECEBEDOR(PERFIL / CONFIGURAÇÕES)
 #Notificar doador(signals)
 #DOADOR(ENTREGAS / CALENDÁRIO / PERFIL / CONFIGURAÇÕES)
