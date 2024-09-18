@@ -51,10 +51,12 @@ def recusar_doacao(request, doacao_id):
 
 def receber_doacao(request):
     recebedor = Recebedores.objects.get(usuario=request.user)
-
     doacoes = Doacao.objects.filter(recebedor=recebedor,status_doacao='aberto')
-
     return render(request, 'recebedor/receber_doacao.html', {'doacoes':doacoes})
+def ver_doacao(request):
+    recebedor = Recebedores.objects.get(usuario = request.user)
+    doacoes = Doacao.objects.filter(recebedor=recebedor)
+    return render(request,'recebedor/ver_doacao.html',{'doacoes':doacoes})
 
 def confirmar_recebimento(request, recebimento_id):
     recebimento = get_object_or_404(DoacaoRec, id=recebimento_id,status='andamento')
@@ -87,4 +89,6 @@ def cancelar_pedido_doacao(request,doacao_id):
     doacao.save()
     messages.success(request, "Seu pedido de doacao foi cancelado")
     return redirect('receber_doacao')
+
+
 

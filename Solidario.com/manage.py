@@ -21,6 +21,8 @@ def main():
 if __name__ == '__main__':
     main()
 
+
+# Cores de urgencia
 # messagem de erro login
 # gerar nova secret key e debug = true settigns.py
 # Hospedar sistema
