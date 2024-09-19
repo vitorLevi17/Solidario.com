@@ -117,7 +117,6 @@
             margin-bottom: 20px;
             text-align: center;
             font-weight: 600;
-            display: none;
         }
 
         .register-link {
@@ -174,7 +173,6 @@
                 <input type="password" id="senha_login" name="senha_login" placeholder="Insira sua senha" required>
                 <span class="password-toggle" id="passwordToggle">👁️</span>
             </div>
-            <div class="error-message" id="errorMessage"></div>
             {% if messages %}
                 <div class="error-message">
                     {% for message in messages %}
