@@ -23,18 +23,17 @@ if __name__ == '__main__':
 
 
 # Cores de urgencia
-# messagem de erro login
 # gerar nova secret key e debug = true settigns.py
 # Hospedar sistema
 # Validação de data
-#RECEBEDOR(PERFIL / CONFIGURAÇÕES)
-#Notificar doador(signals)
-#DOADOR(ENTREGAS / CALENDÁRIO / PERFIL / CONFIGURAÇÕES)
+# RECEBEDOR(PERFIL/ CONFIGURAÇÕES)
+# Notificar doador(signals)
+# DOADOR(CALENDÁRIO / PERFIL / CONFIGURAÇÕES)
 # fazer forms para os filtros de recebedores(Doações,Pedidos,Centros)
 # fazer forms para os filtros de doadores(Pedidos,Centros)
 # Ordenar por urgencia / Localização
 # 1.1-API para buscar endereço formatado
-# 2- Bloquear Views para usuarios diferentes
+# 2- Bloquear Views para usuarios diferentes e login_required
 
 
 
