@@ -29,8 +29,8 @@ if __name__ == '__main__':
 # RECEBEDOR(PERFIL/ CONFIGURAÇÕES)
 # Notificar doador(signals)
 # DOADOR(CALENDÁRIO / PERFIL / CONFIGURAÇÕES)
-# fazer forms para os filtros de recebedores(Doações,Pedidos,Centros)
-# fazer forms para os filtros de doadores(Pedidos,Centros)
+# filtros de recebedores(Doações,Pedidos,Centros) https://github.com/vitorLevi17/PyDj/blob/main/PyDj/apps/galeria/views.py
+# filtros de doadores(Pedidos,Centros) https://github.com/vitorLevi17/PyDj/blob/main/PyDj/apps/galeria/views.py
 # Ordenar por urgencia / Localização
 # 1.1-API para buscar endereço formatado
 # 2- Bloquear Views para usuarios diferentes

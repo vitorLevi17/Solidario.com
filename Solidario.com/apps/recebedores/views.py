@@ -8,8 +8,8 @@ from django.contrib.auth.decorators import login_required
 
 @login_required(login_url='login')
 def recebedor_inicio(request):
-    recebedor = Recebedores.objects.get(usuario = request.user)
-    doacoes = DoacaoRec.objects.filter(doacao_pedido__recebedor = recebedor,status="aberto")
+    recebedor = Recebedores.objects.get(usuario=request.user)
+    doacoes = DoacaoRec.objects.filter(doacao_pedido__recebedor=recebedor,status="aberto")
     return render(request,"recebedor/recebedor_inicio.html",{'doacoes':doacoes})
 
 
