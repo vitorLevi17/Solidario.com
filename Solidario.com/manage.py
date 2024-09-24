@@ -33,7 +33,7 @@ if __name__ == '__main__':
 # fazer forms para os filtros de doadores(Pedidos,Centros)
 # Ordenar por urgencia / Localização
 # 1.1-API para buscar endereço formatado
-# 2- Bloquear Views para usuarios diferentes e login_required
+# 2- Bloquear Views para usuarios diferentes
 
 
 

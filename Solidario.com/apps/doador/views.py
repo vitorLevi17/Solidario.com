@@ -3,11 +3,16 @@ from apps.doacao.models import Doacao,DoacaoRec
 from apps.doacao.forms import DoacaoRecForm
 from apps.doador.models import Doadores
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 
+@login_required(login_url='login')
 def doador_incio(request):
     doacoes = Doacao.objects.filter(status_doacao = "aberto")
     return render(request,"doador/doador_inicio.html",{"doacoes":doacoes})
+
+@login_required(login_url='login')
 def doar(request,doacao_id):
+
     doacao = get_object_or_404(Doacao,id=doacao_id)
     form = DoacaoRecForm
 
@@ -30,8 +35,9 @@ def doar(request,doacao_id):
 
 
     return render(request,"doador/doar.html",{'form':form,'doacao':doacao})
-
+@login_required(login_url='login')
 def status_doacoes(request):
+
     doador = get_object_or_404(Doadores, usuario=request.user)
     doacao_rec = DoacaoRec.objects.filter(doador=doador)  # Corrigido para buscar todas as doações
     return render(request, 'doador/status_doacoes.html', {'doacao_rec': doacao_rec})
