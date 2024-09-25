@@ -27,12 +27,11 @@ if __name__ == '__main__':
 # Hospedar sistema
 # Validação de data
 # RECEBEDOR(PERFIL/ CONFIGURAÇÕES)
-# Notificar doador(signals)
-# DOADOR(CALENDÁRIO / PERFIL / CONFIGURAÇÕES)
+# Notificar doador(signals) DOADOR(CALENDÁRIO / PERFIL / CONFIGURAÇÕES)
 # filtros de recebedores(Doações,Pedidos,Centros) https://github.com/vitorLevi17/PyDj/blob/main/PyDj/apps/galeria/views.py
 # filtros de doadores(Pedidos,Centros) https://github.com/vitorLevi17/PyDj/blob/main/PyDj/apps/galeria/views.py
-# Ordenar por urgencia / Localização
-# 1.1-API para buscar endereço formatado
+# Ordenar por urgencia / Localização https://github.com/vitorLevi17/PyDj/blob/main/PyDj/apps/galeria/views.py
+# 1.1-API para buscar endereço formatado https://github.com/vitorLevi17/PyDj/blob/main/PyDj/apps/galeria/views.py
 # 2- Bloquear Views para usuarios diferentes
 
 

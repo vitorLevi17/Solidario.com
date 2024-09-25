@@ -1,3 +1,4 @@
+from django.utils import timezone
 from django.shortcuts import render, get_object_or_404, redirect
 from apps.doacao.models import Doacao,DoacaoRec
 from apps.doacao.forms import DoacaoRecForm
@@ -21,10 +22,16 @@ def doar(request,doacao_id):
         if form.is_valid():
             doador = Doadores.objects.get(usuario=request.user)
             doacao_rec = form.save(commit=False)
+
+            #validacao data
+            if doacao_rec.data_combinada <= timezone.now():
+                messages.error(request, "A data combinada não pode ser anterior à data de hoje.")
+                return redirect('doar', doacao_id=doacao.id)
+
+            # validacao quantidade
             if not doacao.quantidade >= doacao_rec.quantidade:
                 messages.error(request, "A quantidade de itens não pode ser maior que a cadastrada na doacao")
                 return redirect('doar', doacao_id=doacao.id)
-
 
             doacao_rec.doacao_pedido = doacao
             doacao_rec.modo_entrega = doacao.modo_entrega
