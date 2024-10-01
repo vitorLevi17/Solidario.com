@@ -5,23 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Solidário.com - Tela Inicial Recebedores</title>
     <style>
-        /* Estilos Globais */
-
-        .btn-doar {
-            display: inline-block;
-            padding: 10px 15px;
-            background-color: #28a745;
-            color: #fff;
-            text-decoration: none;
-            border-radius: 5px;
-            font-size: 16px;
-            transition: background-color 0.3s;
+        /* Variáveis de cores */
+        :root {
+            --primary-color: #ff6b6b;
+            --secondary-color: #4ecdc4;
+            --accent-color: #f7fff7;
+            --dark-color: #1a535c;
+            --light-color: #ffe66d;
         }
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
+
+        * {
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: var(--accent-color);
+            color: var(--dark-color);
+            padding: 0;
+            margin: 0;
         }
 
         .container {
@@ -30,154 +34,163 @@
             padding: 20px;
         }
 
-        /* Estilo do Header */
-        .header {
-            background-color: #333;
-            color: #fff;
-            padding: 20px;
+        /* Cabeçalho */
+        header {
+            background-color: var(--primary-color);
+            padding: 15px 0;
             text-align: center;
         }
 
-        .header h1 {
-            margin: 0;
+        header h1 {
+            color: var(--accent-color);
+            font-size: 2em;
         }
 
-        /* Estilo da Doação */
-        .doacao {
-            border: 1px solid #ccc;
-            padding: 15px;
-            margin-bottom: 20px;
-            border-radius: 5px;
-            background-color: #e9ecef;
-        }
-
-        /* Barra de busca */
-        .search-bar {
+        nav ul {
+            list-style-type: none;
+            padding: 0;
             display: flex;
             justify-content: center;
-            margin: 20px 0;
+            margin-top: 10px;
         }
 
-        .search-bar input[type="text"] {
-            width: 80%;
-            padding: 10px;
-            font-size: 16px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
+        nav ul li {
+            margin-left: 15px;
         }
 
-        /* Filtros */
-        .filters {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 20px;
-        }
-
-        .filters div {
-            width: 30%;
-        }
-
-        .filter-label {
+        nav ul li a {
+            color: var(--accent-color);
+            text-decoration: none;
             font-weight: bold;
-            margin-bottom: 10px;
-            display: block;
-        }
-
-        .filter-options {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .filter-options label {
-            margin-bottom: 5px;
-        }
-
-        .filter-options input[type="checkbox"] {
-            margin-right: 10px;
-        }
-
-        /* Botões de navegação */
-        .nav-buttons {
-            display: flex;
-            justify-content: space-around;
-            margin-top: 20px;
-            margin-bottom: 20px;
-        }
-
-        .nav-buttons button {
-            padding: 10px 20px;
-            background-color: #007bff;
-            color: white;
-            border: none;
+            padding: 10px 15px;
+            background-color: var(--secondary-color);
             border-radius: 5px;
-            cursor: pointer;
-            font-size: 16px;
+            transition: background-color 0.3s ease;
         }
 
-        .nav-buttons button:hover {
-            background-color: #0056b3;
+        nav ul li a:hover {
+            background-color: #3db8af;
         }
+
+        /* Conteúdo principal */
+        main {
+            margin-top: 30px;
+        }
+
+        .title {
+            text-align: center;
+            color: var(--primary-color);
+            font-size: 1.8em;
+            margin-bottom: 30px;
+        }
+
+        .doacoes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .doacao-card {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .doacao-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .doacao-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        .doacao-card p {
+            margin: 5px 0;
+            color: var(--dark-color);
+        }
+
+        .doacao-card .label {
+            font-weight: bold;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 10px 15px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: bold;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            cursor: pointer;
+        }
+
+        .btn-doar {
+            background-color: var(--secondary-color);
+            color: var(--accent-color);
+        }
+
+        .btn-doar:hover {
+            background-color: #3db8af;
+            transform: translateY(-2px);
+        }
+
+        .btn-aceitar, .btn-recusar {
+            background-color: var(--primary-color);
+            color: var(--accent-color);
+        }
+
+        .btn-aceitar:hover, .btn-recusar:hover {
+            background-color: #ff5252;
+            transform: translateY(-2px);
+        }
+
+        .empty-message {
+            text-align: center;
+            font-size: 18px;
+            color: var(--dark-color);
+            margin-top: 40px;
+        }
+
     </style>
 </head>
 <body>
-    <div class="container">
-        <!-- Cabeçalho -->
-        <div class="header">
+    <header>
+        <h1>Solidário.com</h1>
+        <nav>
+            <ul>
+                <li><a href="{% url 'logout' %}">Logout</a></li>
+                <li><a href="{% url 'receber_doacao' %}">Receber Doação</a></li>
+                <li><a href="{% url 'ver_doacao' %}">Histórico Doações</a></li>
+            </ul>
+        </nav>
+    </header>
 
-            <h1>Solidário.com</h1>
-            <h2>Lista de Doações para serem recebidas</h2>
-        </div>
-<li><a href="{% url 'logout' %}" style="color: white;">Logout</a></li>
+    <main class="container">
+        <h2 class="title">Doações Disponíveis</h2>
 
-        <!-- Barra de busca -->
-        <div class="search-bar">
-            <input type="text" placeholder="Buscar instituição...">
-        </div>
-
-        <!-- Botões de navegação -->
-        <div class="nav-buttons">
-            <button>Perfil</button>
-            <button>Configurações</button>
-            <a href="{% url 'receber_doacao' %}" class="btn-doar">Receber Doacao</a>
-            <a href="{% url 'ver_doacao' %}" class="btn-doar">Historico Doações</a>
-        </div>
-
-
-            <div>
-                <a href="{% url 'recebedor_criar_doacao' %}" style="width: 100%; display: block; text-decoration: none;">
-                    <button style="width: 100%; padding: 10px; background-color: #007bff; color: white; border: none; border-radius: 5px;">
-                        Adicionar Pedido
-                    </button>
-                </a>
-            </div>
-            <div class="doacoes-list">
+        <div class="doacoes-grid">
             {% if doacoes %}
                 {% for doacao in doacoes %}
-                    <div class="doacao">
-                        <h3>Doador: {{ doacao.doador.nm_doador }}</h3>
-                        <p><strong>Item da Doação:</strong> {{ doacao.item.nm_item }}</p>
-                        <p><strong>Quantidade:</strong> {{ doacao.quantidade }}</p>
-                        <p><strong>Data Combinada:</strong> {{ doacao.data_combinada }}</p>
-                        <p><strong>Modo de Entrega:</strong> {{ doacao.modo_entrega }}</p>
-                        <p><strong>Endereço do Doador:</strong> {{ doacao.doador.cep }}</p>
-                        <p><strong>Data abertura:</strong> {{ doacao.doacao_pedido.data_abertura }}</p>
-                        <a href="{% url 'aceitar_doacao' doacao.id %}" class="btn-doar">Aceitar</a>
-                        <a href="{% url 'recusar_doacao' doacao.id %}" class="btn-doar">Recusar</a>
-
+                    <div class="doacao-card">
+                        <h3>Doação {{ doacao.id }}</h3>
+                        <p><span class="label">Doador:</span> {{ doacao.doador.nm_doador }}</p>
+                        <p><span class="label">Item:</span> {{ doacao.item.nm_item }}</p>
+                        <p><span class="label">Quantidade:</span> {{ doacao.quantidade }}</p>
+                        <p><span class="label">Endereço:</span> {{ doacao.doador.cep }}</p>
+                        <p><span class="label">Data Combinada:</span> {{ doacao.data_combinada }}</p>
+                        <p><span class="label">Modo de Entrega:</span> {{ doacao.modo_entrega }}</p>
+                        <a href="{% url 'aceitar_doacao' doacao.id %}" class="btn btn-aceitar">Aceitar</a>
+                        <a href="{% url 'recusar_doacao' doacao.id %}" class="btn btn-recusar">Recusar</a>
                     </div>
                 {% endfor %}
             {% else %}
-                <p>Nenhuma doação encontrada.</p>
+                <p class="empty-message">Nenhuma doação encontrada no momento.</p>
             {% endif %}
         </div>
-            {% if messages %}
-                <div class="error-message">
-                    {% for message in messages %}
-                        <p>{{ message }}</p>
-                    {% endfor %}
-                </div>
-            {% endif %}
-        </div>
-    </div>
+    </main>
 </body>
 </html>
