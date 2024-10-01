@@ -5,10 +5,25 @@ from apps.doacao.forms import DoacaoRecForm
 from apps.doador.models import Doadores
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
+from apps.sistema.api import con_cep
 
 @login_required(login_url='login')
 def doador_incio(request):
-    doacoes = Doacao.objects.filter(status_doacao = "aberto")
+    doa = Doacao.objects.filter(status_doacao = "aberto")
+    doacoes = []
+    for doacao in doa:
+        cep = doacao.recebedor.cep
+        dados_cep = con_cep(cep)
+        doacoes.append({
+            'id': doacao.id,
+            'item': doacao.item,
+            'quantidade': doacao.quantidade,
+            'recebedor': doacao.recebedor,
+            'urgencia': doacao.get_urgencia_display,
+            'modo_entrega': doacao.get_modo_entrega_display,
+            'doa':doa,
+            'dados_cep':dados_cep
+        })
     return render(request,"doador/doador_inicio.html",{"doacoes":doacoes})
 
 @login_required(login_url='login')
