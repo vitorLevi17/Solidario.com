@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Solidário.com - Tela Inicial Recebedores</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --primary-color: #ff6b6b;
@@ -234,8 +235,8 @@
                         <p><strong>Modo de Entrega:</strong> {{ doacao.modo_entrega }}</p>
                         <p><strong>Endereço do Doador:</strong> {{ doacao.doador.cep }}</p>
                         <p><strong>Data abertura:</strong> {{ doacao.doacao_pedido.data_abertura }}</p>
-                        <a href="{% url 'aceitar_doacao' doacao.id %}" class="btn-doar">Aceitar</a>
-                        <a href="{% url 'recusar_doacao' doacao.id %}" class="btn-doar">Recusar</a>
+                        <a href="{% url 'aceitar_doacao' doacao.id %}" class="btn btn-doar">Aceitar</a>
+                        <a href="{% url 'recusar_doacao' doacao.id %}" class="btn btn-doar">Recusar</a>
 
                     </div>
                 {% endfor %}
