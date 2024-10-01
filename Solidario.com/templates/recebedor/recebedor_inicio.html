@@ -121,35 +121,19 @@
 </head>
 <body>
     <div class="container">
-        <!-- Cabeçalho -->
-        <div class="header">
 
-            <h1>Solidário.com</h1>
-            <h2>Lista de Doações para serem recebidas</h2>
-        </div>
-<li><a href="{% url 'logout' %}" style="color: white;">Logout</a></li>
-
-        <!-- Barra de busca -->
-        <div class="search-bar">
-            <input type="text" placeholder="Buscar instituição...">
-        </div>
 
         <!-- Botões de navegação -->
         <div class="nav-buttons">
             <button>Perfil</button>
-            <button>Configurações</button>
+            <a href="{% url 'logout' %}" class="btn-doar">Logout</a>
             <a href="{% url 'receber_doacao' %}" class="btn-doar">Receber Doacao</a>
             <a href="{% url 'ver_doacao' %}" class="btn-doar">Historico Doações</a>
+            <a href="{% url 'recebedor_criar_doacao' %}" class="btn-doar">Adicionar Pedido</a>
         </div>
 
 
-            <div>
-                <a href="{% url 'recebedor_criar_doacao' %}" style="width: 100%; display: block; text-decoration: none;">
-                    <button style="width: 100%; padding: 10px; background-color: #007bff; color: white; border: none; border-radius: 5px;">
-                        Adicionar Pedido
-                    </button>
-                </a>
-            </div>
+
             <div class="doacoes-list">
             {% if doacoes %}
                 {% for doacao in doacoes %}
