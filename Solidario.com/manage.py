@@ -22,16 +22,15 @@ if __name__ == '__main__':
     main()
 
 
-# Cores de urgencia
+# Cores de urgencia(Chat gpt)
 # gerar nova secret key e debug = true settigns.py
 # Hospedar sistema
-# Validação de data
-# RECEBEDOR(PERFIL/ CONFIGURAÇÕES)
-# Notificar doador(signals) DOADOR(CALENDÁRIO / PERFIL / CONFIGURAÇÕES)
+# Alterar tdo layout RECEBEDOR(PERFIL/ CONFIGURAÇÕES so o botao)
+# Notificar doador(signals) DOADOR(PERFIL*)Buscar por item e por recebedor
 # filtros de recebedores(Doações,Pedidos,Centros) https://github.com/vitorLevi17/PyDj/blob/main/PyDj/apps/galeria/views.py
 # filtros de doadores(Pedidos,Centros) https://github.com/vitorLevi17/PyDj/blob/main/PyDj/apps/galeria/views.py
 # Ordenar por urgencia / Localização https://github.com/vitorLevi17/PyDj/blob/main/PyDj/apps/galeria/views.py
-# 1.1-API para buscar endereço formatado https://github.com/vitorLevi17/PyDj/blob/main/PyDj/apps/galeria/views.py
+# 1.1-API para buscar endereço formatado
 # 2- Bloquear Views para usuarios diferentes
 
 
