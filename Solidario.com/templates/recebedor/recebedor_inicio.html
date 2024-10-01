@@ -5,23 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Solidário.com - Tela Inicial Recebedores</title>
     <style>
-        /* Estilos Globais */
-
-        .btn-doar {
-            display: inline-block;
-            padding: 10px 15px;
-            background-color: #28a745;
-            color: #fff;
-            text-decoration: none;
-            border-radius: 5px;
-            font-size: 16px;
-            transition: background-color 0.3s;
+        :root {
+            --primary-color: #ff6b6b;
+            --secondary-color: #4ecdc4;
+            --accent-color: #f7fff7;
+            --dark-color: #1a535c;
+            --light-color: #ffe66d;
         }
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
+
+        * {
             margin: 0;
             padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--accent-color);
+            color: var(--dark-color);
+            line-height: 1.6;
         }
 
         .container {
@@ -30,73 +32,162 @@
             padding: 20px;
         }
 
-        /* Estilo do Header */
-        .header {
-            background-color: #333;
-            color: #fff;
-            padding: 20px;
+        header {
+            background-color: var(--primary-color);
+            padding: 20px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        nav ul {
+            list-style-type: none;
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        nav ul li {
+            margin-left: 20px;
+        }
+
+        nav ul li a {
+            color: var(--accent-color);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: var(--light-color);
+        }
+
+        h1 {
             text-align: center;
+            margin: 40px 0;
+            color: var(--primary-color);
+            font-size: 2.5em;
         }
 
-        .header h1 {
-            margin: 0;
+        .doacoes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
         }
 
-        /* Estilo da Doação */
         .doacao {
-            border: 1px solid #ccc;
-            padding: 15px;
-            margin-bottom: 20px;
-            border-radius: 5px;
-            background-color: #e9ecef;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
-        /* Barra de busca */
-        .search-bar {
-            display: flex;
-            justify-content: center;
-            margin: 20px 0;
+        .doacao:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
         }
 
-        .search-bar input[type="text"] {
-            width: 80%;
-            padding: 10px;
-            font-size: 16px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
+        .doacao h3 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
         }
 
-        /* Filtros */
-        .filters {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 20px;
+        .doacao p {
+            margin: 10px 0;
         }
 
-        .filters div {
-            width: 30%;
-        }
-
-        .filter-label {
+        .doacao .label {
             font-weight: bold;
-            margin-bottom: 10px;
-            display: block;
+            color: var(--dark-color);
         }
 
-        .filter-options {
-            display: flex;
-            flex-direction: column;
+        .btn {
+            display: inline-block;
+            padding: 10px 15px;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            cursor: pointer;
         }
 
-        .filter-options label {
-            margin-bottom: 5px;
+        .btn-doar {
+            background-color: var(--secondary-color);
+            color: var(--accent-color);
+            margin-top: 20px;
+            margin-bottom: 20px;
         }
 
-        .filter-options input[type="checkbox"] {
-            margin-right: 10px;
+        .btn-doar:hover {
+            background-color: #3db8af;
+            transform: translateY(-2px);
         }
 
-        /* Botões de navegação */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .modal-content {
+            background-color: #fff;
+            margin: 15% auto;
+            padding: 30px;
+            border-radius: 10px;
+            width: 300px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .modal-content p {
+            margin-bottom: 15px;
+            font-size: 18px;
+            color: var(--dark-color);
+        }
+
+        .btn-copiar {
+            background-color: var(--secondary-color);
+            color: var(--accent-color);
+        }
+
+        .btn-copiar:hover {
+            background-color: #3db8af;
+        }
+
+        .btn-fechar {
+            background-color: var(--primary-color);
+            color: var(--accent-color);
+            margin-top: 10px;
+        }
+
+        .btn-fechar:hover {
+            background-color: #ff5252;
+        }
+
+        .empty-message {
+            text-align: center;
+            font-size: 18px;
+            color: var(--dark-color);
+            margin-top: 40px;
+        }
+
+        .btn-doar {
+             background-color: var(--secondary-color);
+             color: var(--accent-color);
+        }
+
+        .doacao {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
         .nav-buttons {
             display: flex;
             justify-content: space-around;
@@ -120,21 +211,19 @@
     </style>
 </head>
 <body>
+<header>
+        <nav class="container">
+            <ul>
+                <li><a href="{% url 'logout' %}" >Logout</a></li>
+                <li><a href="{% url 'receber_doacao' %}">Receber Doacao</a></li>
+                <li><a href="{% url 'ver_doacao' %}">Historico Doações</a></li>
+                <li><a href="{% url 'recebedor_criar_doacao' %}">Adicionar Pedido</a></li>
+            </ul>
+        </nav>
+    </header>
     <div class="container">
 
-
-        <!-- Botões de navegação -->
-        <div class="nav-buttons">
-            <button>Perfil</button>
-            <a href="{% url 'logout' %}" class="btn-doar">Logout</a>
-            <a href="{% url 'receber_doacao' %}" class="btn-doar">Receber Doacao</a>
-            <a href="{% url 'ver_doacao' %}" class="btn-doar">Historico Doações</a>
-            <a href="{% url 'recebedor_criar_doacao' %}" class="btn-doar">Adicionar Pedido</a>
-        </div>
-
-
-
-            <div class="doacoes-list">
+            <div class="doacoes-grid">
             {% if doacoes %}
                 {% for doacao in doacoes %}
                     <div class="doacao">
