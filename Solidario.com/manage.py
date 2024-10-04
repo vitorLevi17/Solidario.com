@@ -18,7 +18,7 @@ def main():
 
 if __name__ == '__main__':
     main()
-
+#Corrigir messages
 # Cores de urgencia(Chat gpt)
 # gerar nova secret key e debug = true settigns.py
 # Hospedar sistema
