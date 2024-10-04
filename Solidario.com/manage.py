@@ -20,7 +20,7 @@ if __name__ == '__main__':
     main()
 #Corrigir messages
 # Cores de urgencia(Chat gpt)
-# gerar nova secret key e debug = true settigns.py
+# debug = true settigns.py
 # Hospedar sistema
 # Alterar tdo layout RECEBEDOR(PERFIL/ CONFIGURAÇÕES so o botao)
 # Notificar doador(signals) DOADOR(PERFIL*)Buscar por item e por recebedor
