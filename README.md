@@ -21,18 +21,5 @@ Solidário.com é um sistema inovador projetado para conectar doadores a institu
 - **Banco de Dados:** SQLite / PostgreSQL
 - **Outros:** Django Rest Framework, Bootstrap
 
-## Como Começar
-
-### Pré-requisitos
-
-- Python 3.10 ou superior
-- Django 5.0 ou superior
-- Um ambiente virtual (recomendado)
-
-### Instalação
-
-1. **Clone o repositório:**
-
-   ```bash
-   git clone https://github.com/seu_usuario/solidario.com.git
-   cd solidario.com
+##Link do projeto:
+- **https://solidario.pythonanywhere.com/
