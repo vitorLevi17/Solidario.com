@@ -22,4 +22,4 @@ Solidário.com é um sistema inovador projetado para conectar doadores a institu
 - **Outros:** Django Rest Framework, Bootstrap
 
 ##Link do projeto:
-- **https://solidario.pythonanywhere.com/
+- https://solidario.pythonanywhere.com/
