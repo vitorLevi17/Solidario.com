@@ -31,6 +31,8 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 DEBUG = True
 
 ALLOWED_HOSTS = []
+##CSRF_TRUSTED_ORIGINS = ['https://3d0f-2804-14d-7242-8070-a448-74e2-e9d7-4ad1.ngrok-free.app']
+
 
 
 # Application definition
@@ -114,7 +116,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'pt-br'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/Sao_Paulo'
 
 USE_I18N = True
 
