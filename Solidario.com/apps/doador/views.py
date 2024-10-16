@@ -9,8 +9,9 @@ from apps.sistema.api import con_cep
 
 @login_required(login_url='login')
 def doador_incio(request):
+    doador = Doadores.objects.get(usuario = request.user)
     doa = Doacao.objects.filter(status_doacao = "aberto")
-    doa_lem = DoacaoRec.objects.filter(status = "andamento")
+    doa_lem = DoacaoRec.objects.filter(status = "andamento",doador = doador)
     doacoes = []
     for doacao in doa:
         cep = doacao.recebedor.cep
