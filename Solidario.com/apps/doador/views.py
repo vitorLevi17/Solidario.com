@@ -31,7 +31,7 @@ def doador_incio(request):
         cep = doacao.doacao_pedido.recebedor.cep
         dados_cep_lem = con_cep(cep)
         doacoes_lem.append({
-            'id': doacao.id,
+            'id': doacao.doacao_pedido.id,
             'item': doacao.item,
             'quantidade': doacao.quantidade,
             'recebedor': doacao.doacao_pedido.recebedor,
