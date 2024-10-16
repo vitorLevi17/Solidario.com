@@ -39,7 +39,7 @@ class Doacao(models.Model):
     item = models.ForeignKey(to=Item,on_delete=models.CASCADE,null=False,blank=False,related_name="item_doacao")#item do pedido
 
 class DoacaoRec(models.Model):
-    modo_entrega = models.CharField(max_length=50) #sujeito a alteração
+    modo_entrega = models.CharField(max_length=50)
     data_combinada = models.DateTimeField(null=False, blank=False)
     data_rec = models.DateTimeField(default=datetime(2000, 1, 1, 0, 0))
     doador = models.ForeignKey(to=Doadores, on_delete=models.CASCADE, null=False, blank=False, related_name="doadores")

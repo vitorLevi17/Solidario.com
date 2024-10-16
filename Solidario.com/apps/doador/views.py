@@ -10,6 +10,7 @@ from apps.sistema.api import con_cep
 @login_required(login_url='login')
 def doador_incio(request):
     doa = Doacao.objects.filter(status_doacao = "aberto")
+    doa_lem = DoacaoRec.objects.filter(status = "andamento")
     doacoes = []
     for doacao in doa:
         cep = doacao.recebedor.cep
@@ -24,7 +25,22 @@ def doador_incio(request):
             'doa':doa,
             'dados_cep':dados_cep
         })
-    return render(request,"doador/doador_inicio.html",{"doacoes":doacoes})
+
+    doacoes_lem = []
+    for doacao in doa_lem:
+        cep = doacao.doacao_pedido.recebedor.cep
+        dados_cep_lem = con_cep(cep)
+        doacoes_lem.append({
+            'id': doacao.id,
+            'item': doacao.item,
+            'quantidade': doacao.quantidade,
+            'recebedor': doacao.doacao_pedido.recebedor,
+            'data_combinada': doacao.data_combinada,
+            'modo_entrega': doacao.modo_entrega,
+            'urgencia': doacao.doacao_pedido.urgencia,
+            'dados_cep_lem': dados_cep_lem
+        })
+    return render(request,"doador/doador_inicio.html",{"doacoes":doacoes,"doacoes_lem":doacoes_lem})
 
 @login_required(login_url='login')
 def doar(request,doacao_id):

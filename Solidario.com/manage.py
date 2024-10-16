@@ -19,10 +19,11 @@ def main():
 
 if __name__ == '__main__':
     main()
+
 #Corrigir messages
 # Cores de urgencia(Chat gpt)
 # Alterar tdo layout RECEBEDOR(PERFIL/ CONFIGURAÇÕES so o botao)
-# Notificar doador(signals) DOADOR(PERFIL*)Buscar por item e por recebedor
+# DOADOR(PERFIL)Buscar por item e por recebedor
 # 2- Bloquear Views para usuarios diferentes
 
 #OPCIONAIS
