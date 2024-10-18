@@ -22,7 +22,7 @@ if __name__ == '__main__':
 
 #Corrigir messages
 # Cores de urgencia(Chat gpt)
-# Alterar tdo layout RECEBEDOR(PERFIL/ CONFIGURAÇÕES so o botao)
+# layout (PERFIL/ CONFIGURAÇÕES botao) receber_doacao / erro no ver_doacao / recebedor_criar_doacao
 # DOADOR(PERFIL)Buscar por item e por recebedor
 # 2- Bloquear Views para usuarios diferentes
 

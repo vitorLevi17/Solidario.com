@@ -4,41 +4,111 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Confirmar Recebimento de Doações</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --primary-color: #ff6b6b;
+            --secondary-color: #4ecdc4;
+            --accent-color: #f7fff7;
+            --dark-color: #1a535c;
+            --light-color: #ffe66d;
+            --background-color: #f4f4f4;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
-            background-color: #f4f4f4;
-            font-family: Arial, sans-serif;
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--background-color);
+            color: var(--dark-color);
+            line-height: 1.6;
         }
+
         .container {
-            margin-top: 20px;
-            background-color: #fff;
+            max-width: 900px;
+            margin: 50px auto;
             padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
+
+        h1 {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
         .doacao {
+            padding: 15px;
+            border: 1px solid var(--light-color);
+            border-radius: 8px;
+            background-color: var(--accent-color);
+            margin-bottom: 20px;
+            transition: background-color 0.3s ease;
             cursor: pointer;
-            padding: 10px;
-            border: 1px solid #ddd;
-            margin-bottom: 10px;
-            border-radius: 5px;
-            background-color: #f8f9fa;
         }
+
         .doacao:hover {
-            background-color: #e9ecef;
+            background-color: var(--light-color);
         }
+
+        .doacao h3 {
+            color: var(--secondary-color);
+            font-weight: 600;
+        }
+
+        .doacao p {
+            font-size: 1.1rem;
+        }
+
         .recebimento {
             display: none;
-            padding: 10px;
-            border: 1px solid #ccc;
-            margin-bottom: 10px;
-            border-radius: 5px;
-            background-color: #e9ecef;
+            padding: 15px;
+            border: 1px solid var(--secondary-color);
+            margin-top: 10px;
+            border-radius: 8px;
+            background-color: var(--light-color);
         }
+
+        .btn-doar, .btn-confirm {
+            padding: 10px 20px;
+            border-radius: 5px;
+            border: none;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-top: 10px;
+            display: inline-block;
+            text-decoration: none;
+            color: white;
+        }
+
+        .btn-doar {
+            background-color: var(--primary-color);
+        }
+
+        .btn-doar:hover {
+            background-color: #e74c3c;
+        }
+
         .btn-confirm {
             background-color: #28a745;
-            color: white;
+        }
+
+        .btn-confirm:hover {
+            background-color: #218838;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
         }
     </style>
 </head>
@@ -55,8 +125,8 @@
                         <p><strong>Status:</strong> {{ doacao.status_doacao }}</p>
                         <p><strong>Urgência:</strong> {{ doacao.urgencia }}</p>
                         <p><strong>Modo de Entrega:</strong> {{ doacao.modo_entrega }}</p>
-                        <a href="{% url 'finalizar_pedido_doacao' doacao.id%}" class="btn-doar">Finalizar Doacao</a>
-                        <a href="{% url 'cancelar_pedido_doacao' doacao.id%}" class="btn-doar">Cancelar Doacao</a>
+                        <a href="{% url 'finalizar_pedido_doacao' doacao.id%}" class="btn-doar">Finalizar Doação</a>
+                        <a href="{% url 'cancelar_pedido_doacao' doacao.id%}" class="btn-doar">Cancelar Doação</a>
                     </div>
 
                     <!-- Recebimentos relacionados à doação -->
@@ -70,7 +140,7 @@
                             {% if recebimento.status == "andamento" %}
                                 <form action="{% url 'confirmar_recebimento' recebimento.id %}" method="POST">
                                     {% csrf_token %}
-                                    <button type="submit" class="btn btn-confirm">Confirmar Recebimento</button>
+                                    <button type="submit" class="btn-confirm">Confirmar Recebimento</button>
                                 </form>
                             {% endif %}
                             <hr>
