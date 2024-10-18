@@ -7,14 +7,14 @@ class DoacaoForm(forms.ModelForm):
         labels = {
             'urgencia': 'Nível de Urgência',
             'modo_entrega': 'Modo de Entrega',
-            'doacao_item': 'Item da Doação',
+            'item': 'Item da Doação',
             'quantidade':'Quantidade'
 
         }
         widgets = {
             'urgencia': forms.Select(attrs={'class': 'form-control'}),
             'modo_entrega': forms.Select(attrs={'class': 'form-control'}),
-            'doacao_item': forms.Select(attrs={'class': 'form-control'}),
+            'item': forms.Select(attrs={'class': 'form-control'}),
             'quantidade': forms.NumberInput(attrs={'class': 'form-control'}),
         }
 
