@@ -3,31 +3,61 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Confirmar Recebimento de Doações</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <title>Historico Doacoes</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --primary-color: #ff6b6b;
+            --secondary-color: #4ecdc4;
+            --accent-color: #f7fff7;
+            --dark-color: #1a535c;
+            --light-color: #ffe66d;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
-            background-color: #f4f4f4;
-            font-family: Arial, sans-serif;
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--accent-color);
+            color: var(--dark-color);
+            line-height: 1.6;
         }
+
         .container {
-            margin-top: 20px;
-            background-color: #fff;
+            max-width: 1200px;
+            margin: 20px auto;
             padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary-color);
+            text-align: center;
+        }
+
         .doacao {
             cursor: pointer;
             padding: 10px;
             border: 1px solid #ddd;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
             border-radius: 5px;
-            background-color: #f8f9fa;
+            background-color: var(--light-color);
+            transition: background-color 0.3s ease;
         }
+
         .doacao:hover {
-            background-color: #e9ecef;
+            background-color: var(--secondary-color);
+            color: var(--accent-color);
         }
+
         .recebimento {
             display: none;
             padding: 10px;
@@ -36,9 +66,43 @@
             border-radius: 5px;
             background-color: #e9ecef;
         }
+
+        .status {
+            font-weight: bold;
+            padding: 5px 10px;
+            border-radius: 20px;
+        }
+
+        .status-pendente { background-color: var(--light-color); color: var(--dark-color); }
+        .status-recebido { background-color: var(--secondary-color); color: var(--accent-color); }
+
         .btn-confirm {
-            background-color: #28a745;
+            background-color: var(--primary-color);
             color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-confirm:hover {
+            background-color: #ff5252;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 40px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .empty-state p {
+            font-size: 1.2rem;
+            color: var(--dark-color);
+            margin-bottom: 20px;
         }
     </style>
 </head>
@@ -62,12 +126,13 @@
                             <p><strong>Doador:</strong> {{ recebimento.doador.nm_doador }}</p>
                             <p><strong>Data Combinada:</strong> {{ recebimento.data_combinada }}</p>
                             <p><strong>Status:</strong> {{ recebimento.status }}</p>
-
                         {% endfor %}
                     </div>
                 {% endfor %}
             {% else %}
-                <p>Você não cadastrou nenhuma doação ainda.</p>
+                <div class="empty-state">
+                    <p>Você não cadastrou nenhuma doação ainda.</p>
+                </div>
             {% endif %}
         </div>
     </div>
