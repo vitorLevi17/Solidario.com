@@ -86,7 +86,7 @@ def cadastro(request):
             )
             doador.save()
 
-            return redirect('index')
+            return redirect('login')
 
     return render(request,'cadastro.html',{"form":form})
 
@@ -140,7 +140,7 @@ def cadastro_recebedor(request):
             )
             recebedor.save()
 
-            return redirect('index')
+            return redirect('login')
 
     return render(request,'cadastro_recebedor.html',{"form":form})
 
