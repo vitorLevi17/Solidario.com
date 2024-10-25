@@ -17,7 +17,7 @@ Solidário.com é um sistema inovador projetado para conectar doadores a institu
 
 - **Backend:** Python, Django
 - **Frontend:** HTML, CSS, JavaScript
-- **Banco de Dados:** SQLite / PostgreSQL
+- **Banco de Dados:** SQLite
 - **Outros:** Django Rest Framework, Bootstrap
 
 ## Link do projeto:
