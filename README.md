@@ -1,6 +1,6 @@
 # Solidário.com
 
-![Solidário.com Logo]([https://photos.fife.usercontent.google.com/pw/AP1GczNRJmjvGQoq79RLpqtZPJ4MnzYXn6IdNhLIlruexqipK3uP8yfF0ARVow=w836-h854-s-no-gm?authuser=0)) <!-- Substitua pelo link da logo do seu projeto -->
+![Solidário.com Logo](https://photos.google.com/photo/AF1QipMyiyTQ45rubFJlWNxVF3yHS82koMe7Hp1SvMI4)) <!-- Substitua pelo link da logo do seu projeto -->
 
 ## Descrição
 
