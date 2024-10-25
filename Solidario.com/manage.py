@@ -20,7 +20,7 @@ def main():
 if __name__ == '__main__':
     main()
 
-#Corrigir messagessssssssssssssssss
+#Corrigir messages
 #Calenario e relogio
 # Cores de urgencia(Chat gpt)
 # DOADOR e Rece(PERFIL  /Configurações) DO-Buscar por item e por recebedor / RE ver_doacao e receber_doacao
