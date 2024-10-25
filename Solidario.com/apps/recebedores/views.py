@@ -91,13 +91,15 @@ def ver_doacao(request):
 @login_required(login_url='login')
 def confirmar_recebimento(request, recebimento_id):
     recebimento = get_object_or_404(DoacaoRec, id=recebimento_id,status='andamento')
-
+    doador = recebimento.doador
     if recebimento.status == "andamento":
 
-        recebimento.doador.historico_doacoes +=1
+        doador.historico_doacoes +=1
         recebimento.status = "finalizado"
         recebimento.data_rec = timezone.now()
+
         recebimento.save()
+        doador.save()
 
         messages.success(request, 'Recebimento confirmado com sucesso!')
     else:
