@@ -1,7 +1,6 @@
 # Solidário.com
 
 ![Solidário.com Logo](https://photos.google.com/photo/AF1QipMyiyTQ45rubFJlWNxVF3yHS82koMe7Hp1SvMI4) <!-- Substitua pelo link da logo do seu projeto -->
-
 ## Descrição
 
 Solidário.com é um sistema inovador projetado para conectar doadores a instituições de caridade. Nosso objetivo é facilitar a doação de itens, promovendo a solidariedade e ajudando aqueles que mais precisam. A plataforma permite que os usuários se cadastrem como doadores ou recebedores, oferecendo uma interface amigável para gerenciar doações de forma simples e eficiente.
