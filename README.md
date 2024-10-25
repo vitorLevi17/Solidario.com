@@ -1,6 +1,6 @@
 # Solidário.com
 
-![Solidário.com Logo](https://photos.google.com/photo/AF1QipMyiyTQ45rubFJlWNxVF3yHS82koMe7Hp1SvMI4)) <!-- Substitua pelo link da logo do seu projeto -->
+![Solidário.com Logo](https://photos.google.com/photo/AF1QipMyiyTQ45rubFJlWNxVF3yHS82koMe7Hp1SvMI4) <!-- Substitua pelo link da logo do seu projeto -->
 
 ## Descrição
 
