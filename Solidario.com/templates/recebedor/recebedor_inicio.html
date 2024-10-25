@@ -234,6 +234,7 @@
                         <p><strong>Data Combinada:</strong> {{ doacao.data_combinada }}</p>
                         <p><strong>Modo de Entrega:</strong> {{ doacao.modo_entrega }}</p>
                         <p><strong>Endereço do Doador:</strong> {{ doacao.dados_cep.logradouro }}</p>
+                        <p><strong>Doações realizadas:</strong> {{ doacao.doador.historico_doacoes }}</p>
                         <a href="{% url 'aceitar_doacao' doacao.id %}" class="btn btn-doar">Aceitar</a>
                         <a href="{% url 'recusar_doacao' doacao.id %}" class="btn btn-doar">Recusar</a>
 
@@ -245,9 +246,7 @@
         </div>
             {% if messages %}
                 <div class="error-message">
-                    {% for message in messages %}
                         <p>{{ message }}</p>
-                    {% endfor %}
                 </div>
             {% endif %}
         </div>

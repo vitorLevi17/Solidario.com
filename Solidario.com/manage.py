@@ -24,7 +24,6 @@ if __name__ == '__main__':
 #Calenario e relogio
 # Cores de urgencia(Chat gpt)
 # DOADOR e Rece(PERFIL  /Configurações) DO-Buscar por item e por recebedor / RE ver_doacao e receber_doacao
-# 2- Bloquear Views para usuarios diferentes
 
 #OPCIONAIS
 # filtros de recebedores(Doações,Pedidos,Centros) https://github.com/vitorLevi17/PyDj/blob/main/PyDj/apps/galeria/views.py
