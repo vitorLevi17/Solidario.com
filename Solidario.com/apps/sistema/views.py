@@ -56,7 +56,12 @@ def cadastro(request):
 
             cpf_val = CPF()
             if not cpf_val.validate(cpf):
-                messages.error(request, "CPF inválido")
+                messages.error(request, "CPF inválido, use só numeros")
+                return redirect('cadastro')
+
+            #cep / telefone / complemento
+            if len(cep) > 8:
+                messages.error(request,"CEP invalido, use só numeros")
                 return redirect('cadastro')
 
             if senha1 != senha2:

@@ -20,14 +20,14 @@ def main():
 if __name__ == '__main__':
     main()
 
+# Validações no cadastro (apps/sistema/views/cadastro e cadastro recebedor)
+#Finalizar doação e não finalizar doacao_rec
 #Corrigir messages
 #Calenario e relogio
-# Cores de urgencia(Chat gpt)
-# DOADOR e Rece(PERFIL  /Configurações) DO-Buscar por item e por recebedor / RE ver_doacao e receber_doacao
-
+# DOADOR e Rece(PERFIL  /Configurações) / RE ver_doacao e receber_doacao
+# filtros de doadores(Itens,Centros) https://github.com/vitorLevi17/PyDj/blob/main/PyDj/apps/galeria/views.py
 #OPCIONAIS
-# filtros de recebedores(Doações,Pedidos,Centros) https://github.com/vitorLevi17/PyDj/blob/main/PyDj/apps/galeria/views.py
-# filtros de doadores(Pedidos,Centros) https://github.com/vitorLevi17/PyDj/blob/main/PyDj/apps/galeria/views.py
+# filtros de recebedores(Pedidos,Centros) https://github.com/vitorLevi17/PyDj/blob/main/PyDj/apps/galeria/views.py
 # Ordenar por urgencia / Localização https://github.com/vitorLevi17/PyDj/blob/main/PyDj/apps/galeria/views.py
 
 
