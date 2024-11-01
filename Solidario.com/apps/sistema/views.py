@@ -61,6 +61,15 @@ def cadastro(request):
                 messages.error(request, "CPF inválido, use só numeros")
                 return redirect('cadastro')
 
+            #cep /telefone
+            if con_cep_status(cep) == 400 or not re.fullmatch(r"^\d{8}$", cep):
+                messages.error(request,"CEP invalido, use só numeros")
+                return redirect('cadastro')
+
+            if not re.fullmatch(r"^\d{14}$", telefone):
+                messages.error(request, "Número de telefone inválido, use somente números")
+                return redirect('cadastro')
+
             if senha1 != senha2:
                 messages.error(request, "Senhas não coincidem")
                 return redirect('cadastro')
