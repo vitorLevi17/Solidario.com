@@ -21,7 +21,6 @@ if __name__ == '__main__':
     main()
 
 # Validações no cadastro (apps/sistema/views/cadastro e cadastro recebedor)
-#Finalizar doação e não finalizar doacao_rec
 #Corrigir messages
 #Calenario e relogio
 # DOADOR e Rece(PERFIL  /Configurações) / RE ver_doacao e receber_doacao

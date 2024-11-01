@@ -111,9 +111,14 @@ def confirmar_recebimento(request, recebimento_id):
 @login_required(login_url='login')
 def finalizar_pedido_doacao(request,doacao_id):
     doacao = get_object_or_404(Doacao,id=doacao_id,status_doacao = "aberto")
+    doacao_rec = get_object_or_404(DoacaoRec,doacao_pedido = doacao,status="andamento")
 
     doacao.status_doacao = "finalizado"
+    doacao_rec.status = "cancelado"
+
     doacao.save()
+    doacao_rec.save()
+
     messages.success(request,"Seu pedido de doacao foi finalizado")
     return redirect('receber_doacao')
 
@@ -121,9 +126,14 @@ def finalizar_pedido_doacao(request,doacao_id):
 @login_required(login_url='login')
 def cancelar_pedido_doacao(request,doacao_id):
     doacao = get_object_or_404(Doacao, id=doacao_id, status_doacao="aberto")
+    doacao_rec = get_object_or_404(DoacaoRec, doacao_pedido=doacao, status="andamento")
 
     doacao.status_doacao = "cancelado"
+    doacao_rec.status = "cancelado"
+
     doacao.save()
+    doacao_rec.save()
+
     messages.success(request, "Seu pedido de doacao foi cancelado")
     return redirect('receber_doacao')
 
