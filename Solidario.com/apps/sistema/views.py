@@ -5,6 +5,8 @@ from django.contrib import auth,messages
 from apps.doador.models import Doadores
 from apps.recebedores.models import Recebedores
 from validate_docbr import CPF,CNPJ
+from .api import con_cep_status
+import re
 def index(request):
     return render(request,'index.html')
 
@@ -57,11 +59,6 @@ def cadastro(request):
             cpf_val = CPF()
             if not cpf_val.validate(cpf):
                 messages.error(request, "CPF inválido, use só numeros")
-                return redirect('cadastro')
-
-            #cep / telefone / complemento
-            if len(cep) > 8:
-                messages.error(request,"CEP invalido, use só numeros")
                 return redirect('cadastro')
 
             if senha1 != senha2:

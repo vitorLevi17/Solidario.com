@@ -13,3 +13,12 @@ def con_cep(cep):
             return "CEP inválido."
     else:
         return "Erro na requisição."
+
+def con_cep_status(cep):
+    url = f'https://viacep.com.br/ws/{cep}/json/'
+    response = requests.get(url)
+
+    if response.status_code == 200:
+        return 200
+    else:
+         return 400
