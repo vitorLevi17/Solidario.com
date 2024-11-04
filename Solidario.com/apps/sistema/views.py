@@ -98,6 +98,9 @@ def cadastro(request):
             doador.save()
 
             return redirect('login')
+        else:
+            messages.error(request, "Há campos inválidos, revise as respostas")
+            return redirect('cadastro')
 
     return render(request,'cadastro.html',{"form":form})
 
@@ -122,12 +125,12 @@ def cadastro_recebedor(request):
                 messages.error(request, "CNPJ inválido")
                 return redirect('cadastro')
 
-            if con_cep_status(cep) == 400 or not re.fullmatch(r"^\d{8}$", cep):
+            if con_cep_status(cep) == 400:
                 messages.error(request,"CEP invalido, use só numeros")
                 return redirect('cadastro')
 
-            if not re.fullmatch(r"^\d{12}$", telefone):
-                messages.error(request, "Número de telefone inválido, use somente números")
+            if not re.fullmatch(r"^\d{11}$", telefone):
+                messages.error(request, "Formato: 71999998888")
                 return redirect('cadastro')
 
             if senha1 != senha2:
@@ -159,6 +162,10 @@ def cadastro_recebedor(request):
             recebedor.save()
 
             return redirect('login')
+        else:
+            messages.error(request, "Há campos inválidos, revise as respostas")
+            return redirect('cadastro')
+
 
     return render(request,'cadastro_recebedor.html',{"form":form})
 

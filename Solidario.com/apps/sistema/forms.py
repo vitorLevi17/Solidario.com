@@ -136,7 +136,7 @@ class CadastroRecebedorForm(forms.Form):
     cep_cad = forms.CharField(
         label="CEP",
         required=True,
-        max_length=8,
+        max_length=9,
         widget=forms.TextInput(
             attrs={
                 "placeholder": "Somente números"
