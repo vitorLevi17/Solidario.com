@@ -62,11 +62,11 @@ def cadastro(request):
                 return redirect('cadastro')
 
             #cep /telefone
-            if con_cep_status(cep) == 400 or not re.fullmatch(r"^\d{8}$", cep):
-                messages.error(request,"CEP invalido, use só numeros")
+            if con_cep_status(cep) == 400:
+                messages.error(request,"CEP invalido")
                 return redirect('cadastro')
 
-            if not re.fullmatch(r"^\d{14}$", telefone):
+            if not re.fullmatch(r"^\d{11}$", telefone):
                 messages.error(request, "Número de telefone inválido, use somente números")
                 return redirect('cadastro')
 

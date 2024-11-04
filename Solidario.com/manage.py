@@ -21,8 +21,7 @@ if __name__ == '__main__':
     main()
 
 # Validações no cadastro telefone e cep
-#Corrigir messages
-#Calenario e relogio
+# Calenario e relogio
 # filtros de doadores(Itens,Centros) https://github.com/vitorLevi17/PyDj/blob/main/PyDj/apps/galeria/views.py
 
 #OPCIONAIS

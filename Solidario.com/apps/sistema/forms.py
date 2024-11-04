@@ -54,7 +54,7 @@ class CadastroForm(forms.Form):
     cep_cad = forms.CharField(
         label="CEP",
         required=True,
-        max_length=8,  # CEP tem no máximo 8 caracteres
+        max_length=9,
         widget=forms.TextInput(
             attrs={
                 "placeholder": "Somente números"
@@ -75,10 +75,10 @@ class CadastroForm(forms.Form):
     telefone_cad = forms.CharField(
         label="Telefone",
         required=True,
-        max_length=13,  # Dependendo do formato com código de área
+        max_length=13,
         widget=forms.TextInput(
             attrs={
-                "placeholder": "Somente números"
+                "placeholder": "71999998888"
             }
         )
     )
