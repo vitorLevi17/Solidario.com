@@ -24,7 +24,7 @@ class DoacaoRecForm(forms.ModelForm):
         model = DoacaoRec
         fields = ['data_combinada', 'quantidade']
         labels = {
-            'data_combinada':'Data de doação',
+            'data_combinada':'Data e horário da doação',
             'quantidade':'Quantidade',
         }
         widgets = {

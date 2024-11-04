@@ -20,7 +20,7 @@ def main():
 if __name__ == '__main__':
     main()
 
-# Validações no cadastro telefone e cep
+
 # Calenario e relogio
 # filtros de doadores(Itens,Centros) https://github.com/vitorLevi17/PyDj/blob/main/PyDj/apps/galeria/views.py
 
