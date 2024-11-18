@@ -5,7 +5,7 @@ from django.contrib import auth,messages
 from apps.doador.models import Doadores
 from apps.recebedores.models import Recebedores
 from validate_docbr import CPF,CNPJ
-from .api import con_cep_status
+from .api import con_cep_status,con_cep_encontrado
 import re
 def index(request):
     return render(request,'index.html')
@@ -99,7 +99,7 @@ def cadastro(request):
 
             return redirect('login')
         else:
-            messages.error(request, "Há campos inválidos, revise as respostas")
+            messages.error(request, "CPF,CEP ou TELEFONE inválidos, revise as respostas")
             return redirect('cadastro')
 
     return render(request,'cadastro.html',{"form":form})
@@ -127,6 +127,11 @@ def cadastro_recebedor(request):
 
             if con_cep_status(cep) == 400:
                 messages.error(request,"CEP invalido, use só numeros")
+                return redirect('cadastro')
+
+            resultado = con_cep_encontrado(cep)
+            if resultado.get("erro") == "true":
+                messages.error(request, "CEP não encontrado")
                 return redirect('cadastro')
 
             if not re.fullmatch(r"^\d{11}$", telefone):
@@ -163,7 +168,7 @@ def cadastro_recebedor(request):
 
             return redirect('login')
         else:
-            messages.error(request, "Há campos inválidos, revise as respostas")
+            messages.error(request, "CPF,CEP ou TELEFONE inválidos, revise as respostas")
             return redirect('cadastro')
 
 

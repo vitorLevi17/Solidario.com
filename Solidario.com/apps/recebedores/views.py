@@ -48,12 +48,28 @@ def recebedor_criar_doacao(request):
 @login_required(login_url='login')
 def aceitar_doacao(request, doacao_id):
         doacao_rec = get_object_or_404(DoacaoRec, id=doacao_id)
+        quantidade_orginal = doacao_rec.quantidade
         form = DoacaoRecForm(instance=doacao_rec)
 
         if request.method == 'POST':
             form = DoacaoRecForm(request.POST, instance=doacao_rec)
             if form.is_valid():
                 doacao_rec = form.save(commit=False)
+                # validacao data
+                if doacao_rec.data_combinada <= timezone.now():
+                    messages.error(request, "A data combinada não pode ser anterior à data de hoje.")
+                    return redirect('aceitar_doacao', doacao_id=doacao_rec.id)
+
+                # validacao quantidade
+                if not quantidade_orginal >= doacao_rec.quantidade:
+                    messages.error(request, "A quantidade de itens não pode ser maior que a cadastrada na doação pelo doador")
+                    return redirect('aceitar_doacao', doacao_id=doacao_rec.id)
+
+                    # validacao quantidade
+                if not doacao_rec.quantidade > 0:
+                    messages.error(request, "A quantidade de itens deve ser maior que 0")
+                    return redirect('aceitar_doacao', doacao_id=doacao_rec.id)
+
                 doacao_rec.status = "andamento"
                 doacao_rec.save()
                 return redirect('recebedor_inicio')

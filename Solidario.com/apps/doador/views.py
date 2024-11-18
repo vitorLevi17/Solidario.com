@@ -62,7 +62,12 @@ def doar(request,doacao_id):
 
             # validacao quantidade
             if not doacao.quantidade >= doacao_rec.quantidade:
-                messages.error(request, "A quantidade de itens não pode ser maior que a cadastrada na doacao")
+                messages.error(request, "A quantidade de itens não pode ser maior que a cadastrada na doação")
+                return redirect('doar', doacao_id=doacao.id)
+
+                # validacao quantidade
+            if not doacao_rec.quantidade > 0:
+                messages.error(request, "A quantidade de itens deve ser maior que 0")
                 return redirect('doar', doacao_id=doacao.id)
 
             doacao_rec.doacao_pedido = doacao

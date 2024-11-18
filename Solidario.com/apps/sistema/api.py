@@ -22,3 +22,12 @@ def con_cep_status(cep):
         return 200
     else:
          return 400
+
+def con_cep_encontrado(cep):
+    url = f'https://viacep.com.br/ws/{cep}/json/'
+    try:
+        response = requests.get(url)
+        response.raise_for_status()
+        return response.json()
+    except requests.exceptions.RequestException:
+        return {"erro": "true"}
