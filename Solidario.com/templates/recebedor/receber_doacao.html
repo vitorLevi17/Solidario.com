@@ -77,6 +77,17 @@
             border-radius: 8px;
             background-color: var(--light-color);
         }
+        .btn {
+            text-align :center;
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: var(--primary-color);
+            color: var(--accent-color);
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+            font-weight: 600;
+        }
 
         .btn-doar, .btn-confirm {
             padding: 10px 20px;
@@ -153,6 +164,10 @@
                 <p>Você não cadastrou nenhuma doação ainda.</p>
             {% endif %}
         </div>
+        <div style="display: flex; justify-content: center;">
+            <a href="{% url 'recebedor_inicio' %}" class="btn">Voltar para a página inicial</a>
+        </div>
+
     </div>
 
     <script>
