@@ -87,3 +87,4 @@ def status_doacoes(request):
     return render(request, 'doador/status_doacoes.html', {'doacao_rec': doacao_rec})
 
 
+

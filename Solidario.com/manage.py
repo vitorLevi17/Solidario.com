@@ -22,9 +22,8 @@ if __name__ == '__main__':
 
 
 # Calenario e relogio
-# filtros de doadores(Itens,Centros) https://github.com/vitorLevi17/PyDj/blob/main/PyDj/apps/galeria/views.py
-
 #OPCIONAIS
+# filtros de doadores(Itens,Centros)
 # filtros de recebedores(Pedidos,Centros) https://github.com/vitorLevi17/PyDj/blob/main/PyDj/apps/galeria/views.py
 # Ordenar por urgencia / Localização https://github.com/vitorLevi17/PyDj/blob/main/PyDj/apps/galeria/views.py
 

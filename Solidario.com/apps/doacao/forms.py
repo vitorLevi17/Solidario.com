@@ -28,6 +28,6 @@ class DoacaoRecForm(forms.ModelForm):
             'quantidade':'Quantidade',
         }
         widgets = {
-            'data_combinada': forms.DateTimeInput(attrs={"placeholder": "Exemplo: 01/01/2000 12:00",'class': 'form-control'}),
+            'data_combinada': forms.DateTimeInput(attrs={"placeholder": "Selecione data e horário da doação",'class': 'form-control'}),
             'quantidade': forms.NumberInput(attrs={'class': 'form-control'})
         }
