@@ -127,17 +127,10 @@
     <script>
          flatpickr("#id_data_combinada", {
             enableTime: true,
-            dateFormat: "d-m-Y H:i",
+            dateFormat: "Y-m-d H:i",
          });
 
-        function submitDateTime() {
-            const dateTime = document.getElementById("datetime-picker").value;
-            if (dateTime) {
-                alert(`Data e hora selecionadas: ${dateTime}`);
-            } else {
-                alert("Por favor, selecione a data e hora.");
-            }
-        }
+
         // Adiciona classes do Bootstrap aos campos do formulário
         document.addEventListener('DOMContentLoaded', function() {
             var inputs = document.querySelectorAll('input, select, textarea');

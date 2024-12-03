@@ -217,7 +217,7 @@
         <nav class="container">
             <ul>
                 <li><a href="{% url 'logout' %}" >Logout</a></li>
-                <li><a href="{% url 'receber_doacao' %}">Receber Doação</a></li>
+                <li><a href="{% url 'receber_doacao' %}">Gerenciar Doações</a></li>
                 <li><a href="{% url 'ver_doacao' %}">Historico Doações</a></li>
                 <li><a href="{% url 'recebedor_criar_doacao' %}">Adicionar Pedido</a></li>
             </ul>
@@ -234,7 +234,8 @@
                         <p><strong>Quantidade:</strong> {{ doacao.quantidade }}</p>
                         <p><strong>Data Combinada:</strong> {{ doacao.data_combinada }}</p>
                         <p><strong>Modo de Entrega:</strong> {{ doacao.modo_entrega }}</p>
-                        <p><strong>Endereço do Doador:</strong> {{ doacao.dados_cep.logradouro }}</p>
+                        <p><strong>Endereço do Doador:</strong> {{ doacao.dados_cep.logradouro }} - {{ doacao.dados_cep.bairro }} - {{ doacao.dados_cep.localidade }}</p>
+                        <p><span class="label">Complemento:</span> {{ doacao.doador.complemento }}</p>
                         <p><strong>Doações realizadas:</strong> {{ doacao.doador.historico_doacoes }}</p>
                         <a href="{% url 'aceitar_doacao' doacao.id %}" class="btn btn-doar">Aceitar</a>
                         <a href="{% url 'recusar_doacao' doacao.id %}" class="btn btn-doar">Recusar</a>
@@ -245,12 +246,7 @@
                 <p>Nenhuma doação encontrada.</p>
             {% endif %}
         </div>
-            {% if messages %}
-                <div class="error-message">
-                        <p>{{ message }}</p>
-                </div>
-            {% endif %}
         </div>
-    </div>
+
 </body>
 </html>

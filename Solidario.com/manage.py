@@ -20,9 +20,7 @@ def main():
 if __name__ == '__main__':
     main()
 
-
-# Calenario e relogio
-#OPCIONAIS
+#FUTURO
 # filtros de doadores(Itens,Centros)
 # filtros de recebedores(Pedidos,Centros) https://github.com/vitorLevi17/PyDj/blob/main/PyDj/apps/galeria/views.py
 # Ordenar por urgencia / Localização https://github.com/vitorLevi17/PyDj/blob/main/PyDj/apps/galeria/views.py

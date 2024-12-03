@@ -31,6 +31,12 @@
             border-radius: 10px;
             box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.1);
         }
+        .error-message {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            text-align: center;
+            font-weight: bold;
+        }
 
         h1 {
             text-align: center;
@@ -109,8 +115,18 @@
                 <label for="id_quantidade">{{ form.quantidade.label }}</label>
                 {{ form.quantidade }}
             </div>
+
+            {% if messages %}
+                <div class="error-message">
+                    {% for message in messages %}
+                        <p>{{ message }}</p>
+                    {% endfor %}
+                </div>
+            {% endif %}
+
             <button type="submit" class="btn btn-primary">Criar Doação</button>
         </form>
+
     </div>
 </body>
 </html>

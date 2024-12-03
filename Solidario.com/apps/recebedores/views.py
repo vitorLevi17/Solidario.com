@@ -36,6 +36,9 @@ def recebedor_criar_doacao(request):
         form = DoacaoForm(request.POST)
         if form.is_valid:
             doacao = form.save(commit=False)
+            if not doacao.quantidade > 0:
+                messages.error(request, "A quantidade de itens deve ser maior que 0")
+                return redirect('recebedor_criar_doacao')
             recebedor = Recebedores.objects.get(usuario=request.user)
 
             doacao.recebedor = recebedor

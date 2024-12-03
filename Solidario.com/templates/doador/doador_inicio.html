@@ -219,7 +219,8 @@
                 <p><span class="label">Recebedor:</span> {{ doacao.recebedor.nm_recebedor }}</p>
                 <p><span class="label">Urgência:</span> {{ doacao.urgencia}}</p>
                 <p><span class="label">Modo de Entrega:</span> {{ doacao.modo_entrega}}</p>
-                <p><span class="label">Endereço:</span> {{ doacao.dados_cep.logradouro }}</p>
+                <p><span class="label">Endereço:</span> {{ doacao.dados_cep.logradouro }} - {{ doacao.dados_cep.bairro }} - {{ doacao.dados_cep.localidade }}</p>
+                <p><span class="label">Complemento:</span> {{ doacao.recebedor.complemento }}</p>
                 <a href="{% url 'doar' doacao.id %}" class="btn btn-doar">Doar</a>
                 <button class="btn btn-pix" data-pix="{{ doacao.recebedor.pix }}" onclick="mostrarChavePix(this)">Pix</button>
             </div>
@@ -250,7 +251,8 @@
                 <p><span class="label">Data combinada:</span> {{ doacao.data_combinada }}</p>
                 <p><span class="label">Modo de Entrega:</span> {{ doacao.modo_entrega}}</p>
                 <p><span class="label">Urgência:</span> {{ doacao.urgencia}}</p>
-                <p><span class="label">Endereço:</span> {{ doacao.dados_cep_lem.logradouro }}</p>
+                <p><span class="label">Endereço:</span> {{ doacao.dados_cep_lem.logradouro }} - {{ doacao.dados_cep_lem.bairro }} - {{ doacao.dados_cep_lem.localidade }}</p>
+                <p><span class="label">Complemento:</span> {{ doacao.recebedor.complemento }}</p>
 
 
             </div>
