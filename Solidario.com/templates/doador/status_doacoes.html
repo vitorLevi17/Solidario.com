@@ -173,7 +173,14 @@
                         <td data-label="Quantidade">{{ doacao.quantidade }}</td>
                         <td data-label="Modo de Entrega">{{ doacao.modo_entrega }}</td>
                         <td data-label="Data Combinada">{{ doacao.data_combinada }}</td>
-                        <td data-label="Data de Recebimento">{{ doacao.data_rec|default:"--" }}</td>
+                        <td data-label="Data de Entrega">
+                            {% if doacao.data_rec|date:"Y-m-d H:i:s" == "2000-01-01 00:00:00" %}
+                                Não entregue
+                            {% else %}
+                                {{ doacao.data_rec }}
+                            {% endif %}
+                        </td>
+
                         <td data-label="Status">
                             <span class="status {% if doacao.status == 'Recebido' %}status-recebido{% else %}status-pendente{% endif %}">
                                 {{ doacao.status }}

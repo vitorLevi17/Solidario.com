@@ -138,7 +138,16 @@
                     <div id="recebimentos-{{ doacao.id }}" class="recebimento">
                         {% for recebimento in doacao.doacao_pedido.all %}
                             <p><strong>Doador:</strong> {{ recebimento.doador.nm_doador }}</p>
+                            <p><strong>Quantidade:</strong> {{ recebimento.quantidade }}</p>
                             <p><strong>Data Combinada:</strong> {{ recebimento.data_combinada }}</p>
+
+                            <p><strong>Data Recebimento:</strong>
+                                {% if recebimento.data_rec|date:"Y-m-d H:i:s" == "2000-01-01 00:00:00" %}
+                                    Não entregue
+                                {% else %}
+                                    {{ recebimento.data_rec }}</p>
+                                {% endif %}
+
                             <p><strong>Status:</strong> {{ recebimento.status }}</p>
                         {% endfor %}
                     </div>

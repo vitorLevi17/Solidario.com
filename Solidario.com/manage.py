@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+
 """Django's command-line utility for administrative tasks."""
 import os
 import sys
@@ -20,7 +20,10 @@ def main():
 if __name__ == '__main__':
     main()
 
+#Ultimas alteraçoes no calendario / Comentar sistema
+
 #FUTURO
+
 # filtros de doadores(Itens,Centros)
 # filtros de recebedores(Pedidos,Centros) https://github.com/vitorLevi17/PyDj/blob/main/PyDj/apps/galeria/views.py
 # Ordenar por urgencia / Localização https://github.com/vitorLevi17/PyDj/blob/main/PyDj/apps/galeria/views.py
