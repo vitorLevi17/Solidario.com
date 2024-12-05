@@ -146,6 +146,7 @@
                     <div id="recebimentos-{{ doacao.id }}" class="recebimento">
                         {% for recebimento in doacao.doacao_pedido.all %}
                             <p><strong>Doador:</strong> {{ recebimento.doador.nm_doador }}</p>
+                            <p><strong>Quantidade:</strong> {{ recebimento.quantidade }}</p>
                             <p><strong>Data Combinada:</strong> {{ recebimento.data_combinada }}</p>
                             <p><strong>Status:</strong> {{ recebimento.status }}</p>
 
