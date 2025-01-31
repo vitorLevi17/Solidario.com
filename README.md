@@ -1,6 +1,6 @@
 # Solidário.com
 
-![Solidário.com Logo]([https://via.placeholder.com/150](https://www.canva.com/design/DAGDtVg2D7k/JBPZSjbIb8UT0Wfz9wwnUw/edit)) <!-- Substitua pelo link da logo do seu projeto -->
+![Solidário.com Logo]([https://via.placeholder.com/150](https://www.canva.com/design/DAGDtVg2D7k/JBPZSjbIb8UT0Wfz9wwnUw/edit))
 
 ## Descrição
 
@@ -19,7 +19,21 @@ Solidário.com é um sistema inovador projetado para conectar doadores a institu
 - **Backend:** Python, Django
 - **Frontend:** HTML, CSS, JavaScript
 - **Banco de Dados:** SQLite
-- **Outros:** Bootstrap
+- **Outros:** Bootstrap,Postman, API ViaCep
+
+## Diagrama de Sequencia do projeto
+![image](https://github.com/user-attachments/assets/1bdaede6-6fb9-4a23-851f-f0652f57f56f)
+
+## Diagrama entidade Relacionamento do Projeto
+![image](https://github.com/user-attachments/assets/9fbdb264-1bd7-4820-8baa-d8c53ade49a8)
+
+## Diagrama de Caso de uso
+![image](https://github.com/user-attachments/assets/48a8c509-35c8-497d-94c9-d14134a1d43d)
+
+## Vídeo de explicação do projeto
+- https://youtu.be/P45wdPIT4pQ
 
 ## Link do projeto:
 - https://solidario.pythonanywhere.com/
+
+
