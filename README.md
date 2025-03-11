@@ -33,7 +33,4 @@ Solidário.com é um sistema inovador projetado para conectar doadores a institu
 ## Vídeo de explicação do projeto
 - https://youtu.be/P45wdPIT4pQ
 
-## Link do projeto:
-- https://solidario.pythonanywhere.com/
-
 
